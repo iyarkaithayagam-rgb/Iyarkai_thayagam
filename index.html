@@ -166,14 +166,15 @@
   @media(min-width:900px){.pillars-grid{grid-template-columns:repeat(3,1fr)}}
   @media(min-width:1100px){.pillars-grid{grid-template-columns:repeat(5,1fr)}}
 
-  .pillar-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s-5);transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease);position:relative;cursor:pointer;min-height:200px;display:flex;flex-direction:column}
+  .pillar-card{background:var(--white);border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line-soft);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease)}
   .pillar-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--green-mid)}
-  .pillar-icon{width:44px;height:44px;border-radius:12px;background:var(--green-soft);color:var(--green-deep);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s-4);transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
-  .pillar-card:hover .pillar-icon{background:var(--green-deep);color:var(--white)}
-  .pillar-num{position:absolute;top:var(--s-4);right:var(--s-4);font-family:var(--f-display);font-size:13px;color:var(--gold);font-weight:700;letter-spacing:0.05em}
-  .pillar-card h3{font-size:17px;margin-bottom:var(--s-2);line-height:1.25}
-  .pillar-card p{font-size:14px;color:var(--ink-soft);line-height:1.55;flex-grow:1}
-  .pillar-head{margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px solid var(--line-soft);font-size:12px;color:var(--ink-mute);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .pillar-img-header{height:150px;position:relative;background-size:cover;background-position:center;padding:var(--s-4);display:flex;flex-direction:column;justify-content:space-between}
+  .pillar-img-header::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(21,61,46,0.25) 0%, rgba(21,61,46,0.85) 100%)}
+  .pillar-num{position:relative;z-index:2;align-self:flex-end;font-family:var(--f-display);font-size:11px;color:var(--gold-soft);background:rgba(21,61,46,0.85);padding:3px 9px;border-radius:var(--r-pill);font-weight:700;letter-spacing:0.05em}
+  .pillar-overlay-title{position:relative;z-index:2;font-size:16px;color:var(--white);line-height:1.25;font-weight:600;margin:0}
+  .pillar-body{padding:var(--s-4);display:flex;flex-direction:column;flex-grow:1;justify-content:space-between}
+  .pillar-body p{font-size:13px;color:var(--ink-soft);line-height:1.5;margin-bottom:var(--s-3);flex-grow:1}
+  .pillar-head{margin-top:auto;padding-top:var(--s-3);border-top:1px solid var(--line-soft);font-size:12px;color:var(--ink-mute);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
   .pillar-head strong{color:var(--green-deep);font-weight:600}
 
   /* RECENT WORK */
@@ -438,39 +439,54 @@
     </div>
     <div class="pillars-grid reveal-stagger">
       <div class="pillar-card">
-        <div class="pillar-num">01</div>
-        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3><span data-i18n="p1t_en" class="active">Environmental Protection</span><span data-i18n="p1t_ta">சுற்றுச்சூழல் பாதுகாப்பு</span></h3>
-        <p><span data-i18n="p1d_en" class="active">Awareness campaigns, plastic cleanup and eco-restoration.</span><span data-i18n="p1d_ta">சுற்றுச்சூழல் விழிப்புணர்வு பிரச்சாரங்கள், நெகிழி ஒழிப்பு மற்றும் இயற்கை பாதுகாப்பு.</span></p>
-        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Kannadhasan (கண்ணதாசன்)</strong></div>
+        <div class="pillar-img-header" style="background-image: linear-gradient(180deg, rgba(21,61,46,0.3) 0%, rgba(21,61,46,0.85) 100%), url('assets/kundrathur_drive.jpg');">
+          <span class="pillar-num">01</span>
+          <h3 class="pillar-overlay-title"><span data-i18n="p1t_en" class="active">Environmental Protection</span><span data-i18n="p1t_ta">சுற்றுச்சூழல் பாதுகாப்பு</span></h3>
+        </div>
+        <div class="pillar-body">
+          <p><span data-i18n="p1d_en" class="active">Awareness campaigns, plastic cleanup and eco-restoration.</span><span data-i18n="p1d_ta">சுற்றுச்சூழல் விழிப்புணர்வு பிரச்சாரங்கள், நெகிழி ஒழிப்பு மற்றும் இயற்கை பாதுகாப்பு.</span></p>
+          <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Kannadhasan (கண்ணதாசன்)</strong></div>
+        </div>
       </div>
       <div class="pillar-card">
-        <div class="pillar-num">02</div>
-        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
-        <h3><span data-i18n="p2t_en" class="active">Water Bodies Protection</span><span data-i18n="p2t_ta">நீர்நிலைகள் பாதுகாப்பு</span></h3>
-        <p><span data-i18n="p2d_en" class="active">Desilting, restoration of village lakes, ponds and water channels.</span><span data-i18n="p2d_ta">கிராமப்புறக் குளங்கள், ஏரிகள் மற்றும் நீர்வரத்துக் கால்வாய்களைத் தூர்வாரி பராமரித்தல்.</span></p>
-        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Mohana Sundaram (மோகன சுந்தரம்)</strong></div>
+        <div class="pillar-img-header" style="background-image: linear-gradient(180deg, rgba(21,61,46,0.3) 0%, rgba(21,61,46,0.85) 100%), url('assets/mannur_forest.jpg');">
+          <span class="pillar-num">02</span>
+          <h3 class="pillar-overlay-title"><span data-i18n="p2t_en" class="active">Water Bodies Protection</span><span data-i18n="p2t_ta">நீர்நிலைகள் பாதுகாப்பு</span></h3>
+        </div>
+        <div class="pillar-body">
+          <p><span data-i18n="p2d_en" class="active">Desilting, restoration of village lakes, ponds and water channels.</span><span data-i18n="p2d_ta">கிராமப்புறக் குளங்கள், ஏரிகள் மற்றும் நீர்வரத்துக் கால்வாய்களைத் தூர்வாரி பராமரித்தல்.</span></p>
+          <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Mohana Sundaram (மோகன சுந்தரம்)</strong></div>
+        </div>
       </div>
       <div class="pillar-card">
-        <div class="pillar-num">03</div>
-        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <h3><span data-i18n="p3t_en" class="active">Organ Donation</span><span data-i18n="p3t_ta">உடலுறுப்பு தானம்</span></h3>
-        <p><span data-i18n="p3d_en" class="active">Pledge drives, medical volunteer sessions and awareness meets.</span><span data-i18n="p3d_ta">உடலுறுப்பு தான விழிப்புணர்வு முகாம்கள், ஆதரவுப் படிவங்கள் மற்றும் மருத்துவ வழிகாட்டுதல்.</span></p>
-        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Nagaraj (நாகராஜ்)</strong></div>
+        <div class="pillar-img-header" style="background-image: linear-gradient(180deg, rgba(21,61,46,0.3) 0%, rgba(21,61,46,0.85) 100%), url('assets/organ_donation.jpg');">
+          <span class="pillar-num">03</span>
+          <h3 class="pillar-overlay-title"><span data-i18n="p3t_en" class="active">Organ Donation</span><span data-i18n="p3t_ta">உடலுறுப்பு தானம்</span></h3>
+        </div>
+        <div class="pillar-body">
+          <p><span data-i18n="p3d_en" class="active">Pledge drives, medical volunteer sessions and awareness meets.</span><span data-i18n="p3d_ta">உடலுறுப்பு தான விழிப்புணர்வு முகாம்கள், ஆதரவுப் படிவங்கள் மற்றும் மருத்துவ வழிகாட்டுதல்.</span></p>
+          <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Nagaraj (நாகராஜ்)</strong></div>
+        </div>
       </div>
       <div class="pillar-card">
-        <div class="pillar-num">04</div>
-        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="6" r="2"/><circle cx="17" cy="6" r="2"/><circle cx="12" cy="17" r="3"/></svg></div>
-        <h3><span data-i18n="p4t_en" class="active">Animal Welfare</span><span data-i18n="p4t_ta">விலங்குகள் நல்வாழ்வு</span></h3>
-        <p><span data-i18n="p4d_en" class="active">Care for stray animals, rescue support and legal protections.</span><span data-i18n="p4d_ta">தெருவிலங்குகளைப் பராமரித்தல், முதலுதவி பாதுகாப்பு மற்றும் சட்டப் பாதுகாப்பு.</span></p>
-        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Ajith Kumar (அஜித் குமார்)</strong></div>
+        <div class="pillar-img-header" style="background-image: linear-gradient(180deg, rgba(21,61,46,0.3) 0%, rgba(21,61,46,0.85) 100%), url('assets/hero_banner.jpg');">
+          <span class="pillar-num">04</span>
+          <h3 class="pillar-overlay-title"><span data-i18n="p4t_en" class="active">Animal Welfare</span><span data-i18n="p4t_ta">விலங்குகள் நல்வாழ்வு</span></h3>
+        </div>
+        <div class="pillar-body">
+          <p><span data-i18n="p4d_en" class="active">Care for stray animals, rescue support and legal protections.</span><span data-i18n="p4d_ta">தெருவிலங்குகளைப் பராமரித்தல், முதலுதவி பாதுகாப்பு மற்றும் சட்டப் பாதுகாப்பு.</span></p>
+          <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Ajith Kumar (அஜித் குமார்)</strong></div>
+        </div>
       </div>
       <div class="pillar-card">
-        <div class="pillar-num">05</div>
-        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c-3 4-3 7 0 10 3-3 3-6 0-10z"/><path d="M12 12v10M7 18l5-2 5 2"/></svg></div>
-        <h3><span data-i18n="p5t_en" class="active">Tree Plantation</span><span data-i18n="p5t_ta">மரக்கன்றுகள் நடுதல்</span></h3>
-        <p><span data-i18n="p5d_en" class="active">Our flagship mission — 1,00,000 palm trees across Tamil Nadu.</span><span data-i18n="p5d_ta">எங்கள் முதன்மைப் பணி — தமிழகம் முழுவதும் 1,00,000 பனை மரங்கள் நடும் திட்டம்.</span></p>
-        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Suresh Veerasamy (சுரேஷ் வீராசாமி)</strong></div>
+        <div class="pillar-img-header" style="background-image: linear-gradient(180deg, rgba(21,61,46,0.3) 0%, rgba(21,61,46,0.85) 100%), url('assets/kundrathur_drive.jpg');">
+          <span class="pillar-num">05</span>
+          <h3 class="pillar-overlay-title"><span data-i18n="p5t_en" class="active">Tree Plantation</span><span data-i18n="p5t_ta">மரக்கன்றுகள் நடுதல்</span></h3>
+        </div>
+        <div class="pillar-body">
+          <p><span data-i18n="p5d_en" class="active">Our flagship mission — 1,00,000 palm trees across Tamil Nadu.</span><span data-i18n="p5d_ta">எங்கள் முதன்மைப் பணி — தமிழகம் முழுவதும் 1,00,000 பனை மரங்கள் நடும் திட்டம்.</span></p>
+          <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Suresh Veerasamy (சுரேஷ் வீராசாமி)</strong></div>
+        </div>
       </div>
     </div>
   </div>
@@ -627,35 +643,7 @@
   </div>
 </section>
 
-<!-- INSTAGRAM COMMUNITY SECTION -->
-<section style="background:var(--white);border-top:1px solid var(--line-soft);padding:var(--s-8) 0;">
-  <div class="wrap">
-    <div style="background:linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);border-radius:var(--r-lg);padding:var(--s-7) var(--s-6);color:var(--white);display:flex;flex-wrap:wrap;align-items:center;justify-space-between;gap:var(--s-5);box-shadow:var(--shadow-md);">
-      <div style="max-width:550px">
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.2);padding:6px 14px;border-radius:var(--r-pill);font-size:13px;font-weight:600;margin-bottom:12px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          @iyarkaithayagam
-        </div>
-        <h3 style="font-size:clamp(24px,3.5vw,32px);color:var(--white);margin-bottom:8px;">
-          <span data-i18n="ig_h_en" class="active">Follow our ground work live on Instagram</span>
-          <span data-i18n="ig_h_ta">எங்கள் களப்பணிகளை இன்ஸ்டாகிராமில் தொடருங்கள்</span>
-        </h3>
-        <p style="font-size:15px;color:rgba(255,255,255,0.9);">
-          <span data-i18n="ig_p_en" class="active">Get daily video updates from our tree plantation drives, water body restoration projects, and community awareness camps.</span>
-          <span data-i18n="ig_p_ta">எங்கள் பனை மரக் கன்றுகள் நடுதல் மற்றும் நீர்நிலைகள் பாதுகாப்புப் பணிகளின் தினசரி வீடியோக்களை இன்ஸ்டாகிராமில் காணுங்கள்.</span>
-        </p>
-      </div>
-      <div>
-        <a href="https://www.instagram.com/iyarkaithayagam?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" class="btn btn-white" style="font-size:16px;padding:14px 28px;color:#d62976;font-weight:700;">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          <span data-i18n="ig_btn_en" class="active">Follow @iyarkaithayagam</span>
-          <span data-i18n="ig_btn_ta">இன்ஸ்டாகிராமில் தொடரவும்</span>
-          <span class="arr">→</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- FOOTER -->
 <footer>
