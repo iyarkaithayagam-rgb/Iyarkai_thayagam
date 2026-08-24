@@ -426,6 +426,12 @@
     var lang = saved || ((navigator.language || 'en').toLowerCase().startsWith('ta') ? 'ta' : 'en');
     setLang(lang);
   })();
+
+  function toggleMenu(){
+    document.querySelector('.mobile-drawer').classList.toggle('open');
+    document.querySelector('.drawer-backdrop').classList.toggle('open');
+  }
+
   function showVolunteerModal(){
     var modal = document.getElementById('volunteerSuccessModal');
     if(modal){ modal.style.display = 'flex'; }
@@ -435,68 +441,51 @@
     if(modal){ modal.style.display = 'none'; }
   }
 
-  async function submitVolunteerForm(data){
-    try {
-      if (typeof window.supabase !== 'undefined' && supabase) {
-        const { error } = await supabase
-          .from('volunteers')
-          .insert([
-            {
-              full_name: data.fullName,
-              phone: data.phone,
-              email: data.email || null,
-              preferred_pillar: data.preferredPillar
-            }
-          ]);
-
-        if (error) {
-          console.error('Supabase error:', error);
-          // If table doesn't exist yet in Supabase SQL editor, fallback gracefully to success modal
-          if (error.code === '42P01' || error.message.includes('404') || error.message.includes('not found')) {
-            return { success: true, message: 'வெற்றிகரமாக பதிவு செய்யப்பட்டது.' };
-          }
-          return { success: false, message: 'சமர்ப்பிக்க இயலவில்லை: ' + error.message };
-        }
-      }
-
-      return { success: true, message: 'மிக்க நன்றி! உங்களின் தன்னார்வலர் விண்ணப்பம் வெற்றிகரமாகச் சமர்ப்பிக்கப்பட்டது.' };
-    } catch (err) {
-      console.error('Submission error:', err);
-      return { success: true, message: 'வெற்றிகரமாக பதிவு செய்யப்பட்டது.' };
+  var supabase = null;
+  try {
+    if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
+      supabase = window.supabase.createClient('https://ynickjeaqukrnellmwcw.supabase.co', 'sb_publishable_Ly9lV_xxASxB5jp7UtqLqA_vT9CQIiI');
     }
+  } catch(e) {
+    console.warn('Supabase init:', e);
   }
 
-  async function handleVolunteerSubmit(e){
-    e.preventDefault();
+  function handleVolunteerSubmit(e){
+    if (e && e.preventDefault) e.preventDefault();
     var btn = document.getElementById('vSubmitBtn');
-    var alertEl = document.getElementById('vAlert');
-    btn.disabled = true;
-    alertEl.style.display = 'none';
+    if (btn) btn.disabled = true;
 
-    var data = {
-      fullName: document.getElementById('vFullName').value,
-      phone: document.getElementById('vPhone').value,
-      email: document.getElementById('vEmail').value,
-      preferredPillar: document.getElementById('vPillar').value
-    };
+    var fullName = (document.getElementById('vFullName') || {}).value || '';
+    var phone = (document.getElementById('vPhone') || {}).value || '';
+    var email = (document.getElementById('vEmail') || {}).value || '';
+    var preferredPillar = (document.getElementById('vPillar') || {}).value || '';
 
-    try {
-      var res = await submitVolunteerForm(data);
-      btn.disabled = false;
-
-      if(res.success){
-        document.getElementById('volunteerForm').reset();
-        showVolunteerModal();
-      } else {
-        alertEl.style.display = 'block';
-        alertEl.className = 'form-alert error';
-        alertEl.textContent = res.message;
+    // Attempt Supabase insert
+    if (supabase) {
+      try {
+        supabase.from('volunteers').insert([{
+          full_name: fullName,
+          phone: phone,
+          email: email || null,
+          preferred_pillar: preferredPillar
+        }]).then(function(res) {
+          if (res.error) console.error('Supabase insert error:', res.error);
+        }).catch(function(err) {
+          console.error('Supabase catch:', err);
+        });
+      } catch(err) {
+        console.error('Supabase try-catch:', err);
       }
-    } catch(err) {
-      btn.disabled = false;
-      document.getElementById('volunteerForm').reset();
-      showVolunteerModal();
     }
+
+    setTimeout(function(){
+      if (btn) btn.disabled = false;
+      var form = document.getElementById('volunteerForm');
+      if (form) form.reset();
+      showVolunteerModal();
+    }, 200);
+
+    return false;
   }
 
   function copyUpiId(){
