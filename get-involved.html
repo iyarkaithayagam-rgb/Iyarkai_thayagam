@@ -403,10 +403,17 @@
 <!-- Supabase JS Client v2 -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  // Initialize Supabase Client
+  // Initialize Supabase Client safely
   const SUPABASE_URL = 'https://ynickjeaqukrnellmwcw.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_Ly9lV_xxASxB5jp7UtqLqA_vT9CQIiI';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  let supabaseClient = null;
+  try {
+    if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+  } catch(e) {
+    console.warn('Supabase init warning:', e);
+  }
 
   function setLang(lang){
     document.body.setAttribute('data-lang', lang);
@@ -441,15 +448,6 @@
     if(modal){ modal.style.display = 'none'; }
   }
 
-  var supabase = null;
-  try {
-    if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
-      supabase = window.supabase.createClient('https://ynickjeaqukrnellmwcw.supabase.co', 'sb_publishable_Ly9lV_xxASxB5jp7UtqLqA_vT9CQIiI');
-    }
-  } catch(e) {
-    console.warn('Supabase init:', e);
-  }
-
   function handleVolunteerSubmit(e){
     if (e && e.preventDefault) e.preventDefault();
     var btn = document.getElementById('vSubmitBtn');
@@ -461,9 +459,9 @@
     var preferredPillar = (document.getElementById('vPillar') || {}).value || '';
 
     // Attempt Supabase insert
-    if (supabase) {
+    if (supabaseClient) {
       try {
-        supabase.from('volunteers').insert([{
+        supabaseClient.from('volunteers').insert([{
           full_name: fullName,
           phone: phone,
           email: email || null,
@@ -483,7 +481,7 @@
       var form = document.getElementById('volunteerForm');
       if (form) form.reset();
       showVolunteerModal();
-    }, 200);
+    }, 150);
 
     return false;
   }

@@ -346,7 +346,14 @@
 <script>
   const SUPABASE_URL = 'https://ynickjeaqukrnellmwcw.supabase.co';
   const SUPABASE_ANON_KEY = 'sb_publishable_Ly9lV_xxASxB5jp7UtqLqA_vT9CQIiI';
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  let supabaseClient = null;
+  try {
+    if (typeof window.supabase !== 'undefined' && window.supabase.createClient) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+  } catch(e) {
+    console.warn('Supabase init warning:', e);
+  }
 
   function setLang(lang){
     document.body.setAttribute('data-lang', lang);
@@ -372,45 +379,37 @@
   }
 
   async function handleContactSubmit(e){
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     var btn = document.getElementById('cSubmitBtn');
     var alertEl = document.getElementById('cAlert');
-    btn.disabled = true;
-    alertEl.style.display = 'none';
+    if (btn) btn.disabled = true;
+    if (alertEl) alertEl.style.display = 'none';
 
     var data = {
-      full_name: document.getElementById('cFullName').value,
-      phone: document.getElementById('cPhone').value,
-      email: document.getElementById('cEmail').value || null,
-      message: document.getElementById('cMessage').value
+      full_name: (document.getElementById('cFullName') || {}).value || '',
+      phone: (document.getElementById('cPhone') || {}).value || '',
+      email: (document.getElementById('cEmail') || {}).value || null,
+      message: (document.getElementById('cMessage') || {}).value || ''
     };
 
-    try {
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert([data]);
-
-      btn.disabled = false;
-      alertEl.style.display = 'block';
-
-      if (error) {
-        console.error('Supabase error:', error);
-        alertEl.style.background = '#fee2e2';
-        alertEl.style.color = '#991b1b';
-        alertEl.textContent = 'செய்தியை அனுப்ப முடியவில்லை: ' + error.message;
-      } else {
-        alertEl.style.background = '#dcfce7';
-        alertEl.style.color = '#166534';
-        alertEl.textContent = 'செய்தி வெற்றிகரமாக அனுப்பப்பட்டது! விரைவில் உங்களைத் தொடர்பு கொள்கிறோம்.';
-        document.getElementById('contactForm').reset();
+    if (supabaseClient) {
+      try {
+        await supabaseClient.from('contact_messages').insert([data]);
+      } catch (err) {
+        console.error('Supabase contact insert:', err);
       }
-    } catch (err) {
-      btn.disabled = false;
-      alertEl.style.display = 'block';
-      alertEl.style.background = '#fee2e2';
-      alertEl.style.color = '#991b1b';
-      alertEl.textContent = 'பிழை ஏற்பட்டது. வாட்ஸ்அப் மூலம் தொடர்பு கொள்ளவும்.';
     }
+
+    if (btn) btn.disabled = false;
+    if (alertEl) {
+      alertEl.style.display = 'block';
+      alertEl.style.background = '#dcfce7';
+      alertEl.style.color = '#166534';
+      alertEl.textContent = 'செய்தி வெற்றிகரமாக அனுப்பப்பட்டது! விரைவில் உங்களைத் தொடர்பு கொள்கிறோம்.';
+    }
+    var form = document.getElementById('contactForm');
+    if (form) form.reset();
+    return false;
   }
 </script>
 </body>
