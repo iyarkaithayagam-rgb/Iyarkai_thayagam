@@ -209,29 +209,52 @@
 </section>
 
 <!-- DONATION SECTION -->
-<section id="donate" style="background:var(--cream-warm)">
+<section id="donate" style="background:var(--cream-warm); padding:var(--s-8) 0;">
   <div class="wrap">
-    <div class="form-box" style="background:var(--white);border:2px solid var(--gold)">
-      <h2 style="font-size:26px;margin-bottom:12px;color:var(--gold-deep);text-align:center">
-        <span data-i18n="d_h_en" class="active">Support Iyarkai Thayagam Arakkattalai</span>
-        <span data-i18n="d_h_ta">இயற்கை தாயகம் அறக்கட்டளைக்கு நன்கொடை</span>
-      </h2>
-      <p style="text-align:center;font-size:14px;color:var(--ink-soft);margin-bottom:20px">
-        <span data-i18n="d_sub_en" class="active">Your contribution directly funds palm seeds, pond desilting equipment and medical awareness camps.</span>
-        <span data-i18n="d_sub_ta">உங்கள் நன்கொடை நேரடியாக பனை விதைகள், குளம் தூர்வாரும் கருவிகள் மற்றும் விழிப்புணர்வு முகாம்களுக்குப் பயன்படுகிறது.</span>
-      </p>
-      <div style="display:flex;justify-content:center;gap:10px;margin-bottom:20px;">
-        <button class="btn btn-gold" style="flex:1;">
-          <span data-i18n="ot_en" class="active">One-Time</span><span data-i18n="ot_ta">ஒருமுறை</span>
-        </button>
-        <button class="btn btn-outline" style="flex:1;">
-          <span data-i18n="mo_en" class="active">Monthly</span><span data-i18n="mo_ta">மாதாந்திர</span>
-        </button>
+    <div class="form-box" style="background:var(--white); border:2px solid var(--gold); border-radius:16px; padding:32px 24px; box-shadow:var(--shadow-md); max-width:640px; margin:0 auto;">
+      
+      <div style="text-align:center; margin-bottom:24px;">
+        <span style="background:var(--green-light); color:var(--green-deep); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 12px; border-radius:20px; display:inline-block; margin-bottom:8px;">
+          <span data-i18n="d_badge_en" class="active">Official NGO Donation</span>
+          <span data-i18n="d_badge_ta">அரசு பதிவு பெற்ற அறக்கட்டளை நன்கொடை</span>
+        </span>
+        <h2 style="font-size:26px; color:var(--green-deep); margin-bottom:8px;">
+          <span data-i18n="d_h_en" class="active">Support Iyarkai Thayagam Arakkattalai</span>
+          <span data-i18n="d_h_ta">இயற்கை தாயகம் அறக்கட்டளைக்கு நன்கொடை</span>
+        </h2>
+        <p style="font-size:14px; color:var(--ink-soft); max-width:480px; margin:0 auto 4px;">
+          <span data-i18n="d_sub_en" class="active">Scan the QR code below using any UPI App (GPay, PhonePe, Paytm, BHIM) to make your direct donation.</span>
+          <span data-i18n="d_sub_ta">GPay, PhonePe, Paytm அல்லது BHIM மூலமாக QR குறியீட்டை ஸ்கேன் செய்து நேரடியாக நன்கொடை அளியுங்கள்.</span>
+        </p>
+        <p style="font-size:13px; font-weight:600; color:var(--gold-deep); margin-top:4px;">NGO Reg No: 32/2019 · Indian Bank Account</p>
       </div>
-      <a href="https://razorpay.com/" target="_blank" rel="noopener" class="btn btn-gold" style="width:100%;justify-content:center;font-size:17px;padding:16px;">
-        <span data-i18n="rzp_en" class="active">Proceed to Secure Razorpay Payment Page</span>
-        <span data-i18n="rzp_ta">பாதுகாப்பான நன்கொடை பக்கத்திற்குச் செல்லவும்</span>
-      </a>
+
+      <!-- QR CODE CONTAINER -->
+      <div style="text-align:center; background:#f9fafb; border:1px dashed #cbd5e1; border-radius:12px; padding:20px; margin-bottom:20px;">
+        <img src="assets/upi_qr.jpg" alt="Iyarkai Thayagam Arakkattalai Indian Bank UPI QR Code" style="max-width:280px; width:100%; height:auto; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.08); border:3px solid white; display:block; margin:0 auto 16px;">
+        
+        <div style="background:white; border:1px solid #e2e8f0; border-radius:8px; padding:10px 16px; display:inline-flex; align-items:center; gap:10px; max-width:100%; word-break:break-all; flex-wrap:wrap; justify-content:center;">
+          <span style="font-size:13px; color:#64748b; font-weight:600;">UPI ID:</span>
+          <strong id="upiId" style="font-size:14px; color:var(--green-deep); font-family:monospace;">iyarkaithayagamarakkatalai@indianbk</strong>
+          <button onclick="copyUpiId()" id="copyBtn" style="background:var(--green-light); color:var(--green-deep); border:none; border-radius:6px; padding:6px 12px; font-size:12px; font-weight:700; cursor:pointer; transition:all 0.2s;">
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE DEEP LINK BUTTON & APPS -->
+      <div style="display:flex; flex-direction:column; gap:12px; text-align:center;">
+        <a href="upi://pay?pa=iyarkaithayagamarakkatalai@indianbk&pn=Iyarkai%20Thayagam%20Arakkattalai&cu=INR" class="btn btn-gold" style="width:100%; justify-content:center; font-size:16px; padding:14px; background:linear-gradient(135deg, var(--green-deep), var(--green-mid)); color:white; border:none; box-shadow:0 4px 10px rgba(13,40,24,0.2);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span data-i18n="upi_btn_en" class="active">Pay via Installed UPI App (Mobile)</span>
+          <span data-i18n="upi_btn_ta">UPI செயலியில் நேரடியாக தொகையை செலுத்த கிளிக் செய்க</span>
+        </a>
+        
+        <p style="font-size:12px; color:var(--ink-soft); margin-top:4px;">
+          Accepts Google Pay, PhonePe, Paytm, BHIM, IndSMART & all Net Banking UPI Apps.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -379,6 +402,43 @@
     alertEl.textContent = res.message;
     if(res.success){
       document.getElementById('volunteerForm').reset();
+    }
+  }
+
+  function copyUpiId(){
+    var upiText = 'iyarkaithayagamarakkatalai@indianbk';
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(upiText).then(function(){
+        showCopiedState();
+      }).catch(function(){
+        fallbackCopy(upiText);
+      });
+    } else {
+      fallbackCopy(upiText);
+    }
+  }
+
+  function fallbackCopy(text){
+    var input = document.createElement('input');
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+    showCopiedState();
+  }
+
+  function showCopiedState(){
+    var btn = document.getElementById('copyBtn');
+    if(btn){
+      btn.innerText = 'Copied! ✓';
+      btn.style.background = '#25D366';
+      btn.style.color = 'white';
+      setTimeout(function(){
+        btn.innerText = 'Copy';
+        btn.style.background = 'var(--green-light)';
+        btn.style.color = 'var(--green-deep)';
+      }, 2000);
     }
   }
 </script>
