@@ -201,6 +201,46 @@
     </div>
   </div>
 </section>
+
+<!-- CONTACT FORM SECTION -->
+<section style="background:var(--cream-warm); padding:var(--s-8) 0;">
+  <div class="wrap">
+    <div class="form-box" style="background:var(--white); border:2px solid var(--green); border-radius:16px; padding:32px 24px; box-shadow:var(--shadow-md); max-width:640px; margin:0 auto;">
+      <h2 style="font-size:26px; color:var(--green-deep); margin-bottom:8px; text-align:center;">
+        <span data-i18n="cf_h_en" class="active">Send Us a Direct Message</span>
+        <span data-i18n="cf_h_ta">எங்களுக்கு செய்தி அனுப்பவும்</span>
+      </h2>
+      <p style="text-align:center; font-size:14px; color:var(--ink-soft); margin-bottom:20px;">
+        <span data-i18n="cf_sub_en" class="active">Fill out the form below and our team will get back to you shortly.</span>
+        <span data-i18n="cf_sub_ta">கீழுள்ள படிவத்தைப் பூர்த்தி செய்து உங்கள் செய்தியை அனுப்புங்கள்.</span>
+      </p>
+
+      <form id="contactForm" onsubmit="handleContactSubmit(event)">
+        <div class="form-group" style="margin-bottom:16px;">
+          <label style="display:block; font-weight:600; font-size:14px; margin-bottom:6px;"><span data-i18n="fn_en" class="active">Full Name</span><span data-i18n="fn_ta">முழு பெயர்</span> *</label>
+          <input type="text" id="cFullName" required placeholder="உங்களின் பெயர்" style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px; font-family:inherit;">
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label style="display:block; font-weight:600; font-size:14px; margin-bottom:6px;"><span data-i18n="ph_en" class="active">Phone / WhatsApp Number</span><span data-i18n="ph_ta">தொலைபேசி / வாட்ஸ்அப் எண்</span> *</label>
+          <input type="tel" id="cPhone" required placeholder="+91 98765 43210" style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px; font-family:inherit;">
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label style="display:block; font-weight:600; font-size:14px; margin-bottom:6px;"><span data-i18n="em_en" class="active">Email Address</span><span data-i18n="em_ta">மின்னஞ்சல் முகவரி</span></label>
+          <input type="email" id="cEmail" placeholder="name@example.com" style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px; font-family:inherit;">
+        </div>
+        <div class="form-group" style="margin-bottom:16px;">
+          <label style="display:block; font-weight:600; font-size:14px; margin-bottom:6px;"><span data-i18n="msg_en" class="active">Your Message / Inquiry</span><span data-i18n="msg_ta">உங்கள் செய்தி</span> *</label>
+          <textarea id="cMessage" rows="4" required placeholder="உங்களின் சந்தேகங்கள் அல்லது கருத்துக்களை இங்கே பதிவிடவும்..." style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:10px; font-family:inherit;"></textarea>
+        </div>
+        <button type="submit" id="cSubmitBtn" class="btn btn-primary" style="width:100%; margin-top:16px; background:var(--green-deep); color:white; font-size:16px; padding:12px;">
+          <span data-i18n="csub_en" class="active">Send Message</span>
+          <span data-i18n="csub_ta">செய்தியை அனுப்புக</span>
+        </button>
+        <div id="cAlert" class="form-alert" style="margin-top:16px; display:none; padding:12px; border-radius:8px; text-align:center; font-weight:600;"></div>
+      </form>
+    </div>
+  </div>
+</section>
 </main>
 
 <!-- FOOTER -->
@@ -301,7 +341,13 @@
   </div>
 </footer>
 
+<!-- Supabase JS Client v2 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  const SUPABASE_URL = 'https://ynickjeaqukrnellmwcw.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_Ly9lV_xxASxB5jp7UtqLqA_vT9CQIiI';
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   function setLang(lang){
     document.body.setAttribute('data-lang', lang);
     document.documentElement.setAttribute('lang', lang);
@@ -323,6 +369,48 @@
   function toggleMenu(){
     document.querySelector('.mobile-drawer').classList.toggle('open');
     document.querySelector('.drawer-backdrop').classList.toggle('open');
+  }
+
+  async function handleContactSubmit(e){
+    e.preventDefault();
+    var btn = document.getElementById('cSubmitBtn');
+    var alertEl = document.getElementById('cAlert');
+    btn.disabled = true;
+    alertEl.style.display = 'none';
+
+    var data = {
+      full_name: document.getElementById('cFullName').value,
+      phone: document.getElementById('cPhone').value,
+      email: document.getElementById('cEmail').value || null,
+      message: document.getElementById('cMessage').value
+    };
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([data]);
+
+      btn.disabled = false;
+      alertEl.style.display = 'block';
+
+      if (error) {
+        console.error('Supabase error:', error);
+        alertEl.style.background = '#fee2e2';
+        alertEl.style.color = '#991b1b';
+        alertEl.textContent = 'செய்தியை அனுப்ப முடியவில்லை: ' + error.message;
+      } else {
+        alertEl.style.background = '#dcfce7';
+        alertEl.style.color = '#166534';
+        alertEl.textContent = 'செய்தி வெற்றிகரமாக அனுப்பப்பட்டது! விரைவில் உங்களைத் தொடர்பு கொள்கிறோம்.';
+        document.getElementById('contactForm').reset();
+      }
+    } catch (err) {
+      btn.disabled = false;
+      alertEl.style.display = 'block';
+      alertEl.style.background = '#fee2e2';
+      alertEl.style.color = '#991b1b';
+      alertEl.textContent = 'பிழை ஏற்பட்டது. வாட்ஸ்அப் மூலம் தொடர்பு கொள்ளவும்.';
+    }
   }
 </script>
 </body>

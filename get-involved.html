@@ -358,7 +358,14 @@
   </div>
 </footer>
 
+<!-- Supabase JS Client v2 -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  // Initialize Supabase Client
+  const SUPABASE_URL = 'https://ynickjeaqukrnellmwcw.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_Ly9lV_xxASxB5jp7UtqLqA_vT9CQIiI';
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
   function setLang(lang){
     document.body.setAttribute('data-lang', lang);
     document.documentElement.setAttribute('lang', lang);
@@ -382,6 +389,31 @@
     document.querySelector('.drawer-backdrop').classList.toggle('open');
   }
 
+  async function submitVolunteerForm(data){
+    try {
+      const { error } = await supabase
+        .from('volunteers')
+        .insert([
+          {
+            full_name: data.fullName,
+            phone: data.phone,
+            email: data.email || null,
+            preferred_pillar: data.preferredPillar
+          }
+        ]);
+
+      if (error) {
+        console.error('Supabase error:', error);
+        return { success: false, message: 'சமர்ப்பிக்க இயலவில்லை: ' + error.message };
+      }
+
+      return { success: true, message: 'மிக்க நன்றி! உங்களின் தன்னார்வலர் விண்ணப்பம் வெற்றிகரமாகச் சமர்ப்பிக்கப்பட்டது.' };
+    } catch (err) {
+      console.error('Submission error:', err);
+      return { success: false, message: 'பிழை ஏற்பட்டது. தயவுசெய்து வாட்ஸ்அப் மூலம் தொடர்பு கொள்ளவும்.' };
+    }
+  }
+
   async function handleVolunteerSubmit(e){
     e.preventDefault();
     var btn = document.getElementById('vSubmitBtn');
@@ -398,6 +430,7 @@
 
     var res = await submitVolunteerForm(data);
     btn.disabled = false;
+    alertEl.style.display = 'block';
     alertEl.className = 'form-alert ' + (res.success ? 'success' : 'error');
     alertEl.textContent = res.message;
     if(res.success){
