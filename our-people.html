@@ -79,8 +79,11 @@
   .drawer-backdrop.open{opacity:1;pointer-events:auto}
 
   .people-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--s-6)}
-  .people-card{background:var(--white);border-radius:var(--r-lg);padding:var(--s-6);border:1px solid var(--line);box-shadow:var(--shadow-sm);text-align:center;display:flex;flex-direction:column;align-items:center}
-  .people-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--green-deep),var(--gold));color:var(--white);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;margin-bottom:var(--s-4);box-shadow:var(--shadow-md)}
+  .people-card{background:var(--white);border-radius:var(--r-lg);padding:var(--s-6);border:1px solid var(--line);box-shadow:var(--shadow-sm);text-align:center;display:flex;flex-direction:column;align-items:center;transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease)}
+  .people-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .people-avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--green-deep),var(--gold));color:var(--white);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:700;margin-bottom:var(--s-4);box-shadow:var(--shadow-md);border:3px solid var(--gold-soft)}
+  .people-img{width:110px;height:110px;border-radius:50%;object-fit:cover;object-position:top center;margin-bottom:var(--s-4);box-shadow:var(--shadow-md);border:3px solid var(--gold);transition:transform var(--dur-fast) var(--ease)}
+  .people-card:hover .people-img{transform:scale(1.05)}
   .people-name{font-size:20px;font-weight:700;color:var(--green-deep);margin-bottom:4px}
   .people-title{font-size:14px;color:var(--gold-deep);font-weight:600;margin-bottom:var(--s-3)}
   .people-desc{font-size:13px;color:var(--ink-soft);line-height:1.5}
@@ -175,19 +178,19 @@
     </h2>
     <div class="people-grid">
       <div class="people-card">
-        <div class="people-avatar">இ</div>
+        <img src="assets/leader_1.jpg" alt="Ilagovan Photo" class="people-img">
         <div class="people-name">Ilagovan (இளங்கோவன்)</div>
         <div class="people-title"><span data-i18n="r1_en" class="active">President</span><span data-i18n="r1_ta">தலைவர்</span></div>
         <div class="people-desc"><span data-i18n="r1d_en" class="active">Guides overall vision, strategic partnerships and trust governance.</span><span data-i18n="r1d_ta">அறக்கட்டளையின் ஒட்டுமொத்த தொலைநோக்கு பார்வை மற்றும் வழிகாட்டுதலை வழங்குகிறார்.</span></div>
       </div>
       <div class="people-card">
-        <div class="people-avatar">நா</div>
+        <img src="assets/leader_2.jpg" alt="Nagaraj Photo" class="people-img">
         <div class="people-name">Nagaraj (நாகராஜ்)</div>
         <div class="people-title"><span data-i18n="r2_en" class="active">Vice President</span><span data-i18n="r2_ta">துணைத் தலைவர்</span></div>
         <div class="people-desc"><span data-i18n="r2d_en" class="active">Oversees daily operations and leads Organ Donation initiatives.</span><span data-i18n="r2d_ta">அன்றாட செயல்பாடுகளை மேற்பார்வையிட்டு, உடலுறுப்பு தான விழிப்புணர்வை முன்னெடுக்கிறார்.</span></div>
       </div>
       <div class="people-card">
-        <div class="people-avatar">மோ</div>
+        <img src="assets/leader_4.jpg" alt="Mohana Sundaram Photo" class="people-img">
         <div class="people-name">Mohana Sundaram (மோகன சுந்தரம்)</div>
         <div class="people-title"><span data-i18n="r3_en" class="active">General Secretary</span><span data-i18n="r3_ta">பொதுச் செயலாளர்</span></div>
         <div class="people-desc"><span data-i18n="r3d_en" class="active">Manages administration and leads Water Bodies Conservation.</span><span data-i18n="r3d_ta">செயலகப் பணிகளை நிர்வகித்து, நீர்நிலைகள் பாதுகாப்புப் பணிகளுக்குத் தலைமை தாங்குகிறார்.</span></div>
@@ -211,13 +214,13 @@
     </h2>
     <div class="people-grid">
       <div class="people-card" style="border:1.5px solid var(--green)">
-        <div class="people-avatar" style="background:var(--green-deep)">சு</div>
+        <img src="assets/leader_5.jpg" alt="Suresh Veerasamy Photo" class="people-img">
         <div class="people-name">Suresh Veerasamy (சுரேஷ் வீராசாமி)</div>
         <div class="people-title"><span data-i18n="ss1_en" class="active">State Secretary — IT Wing</span><span data-i18n="ss1_ta">மாநிலச் செயலாளர் — IT பிரிவு</span></div>
         <div class="people-desc" style="color:var(--green-deep);font-weight:600"><span data-i18n="ss1d_en" class="active">Head — Tree Plantation (1,00,000 Palms Mission)</span><span data-i18n="ss1d_ta">தலைவர் — மரக்கன்றுகள் நடுதல் (1,00,000 பனை மரங்கள் திட்டம்)</span></div>
       </div>
       <div class="people-card" style="border:1.5px solid var(--green)">
-        <div class="people-avatar" style="background:var(--green-deep)">அ</div>
+        <img src="assets/leader_3.jpg" alt="Ajith Kumar Photo" class="people-img">
         <div class="people-name">Ajith Kumar (அஜித் குமார்)</div>
         <div class="people-title"><span data-i18n="ss2_en" class="active">State Secretary — Legal Wing</span><span data-i18n="ss2_ta">மாநிலச் செயலாளர் — சட்டப் பிரிவு</span></div>
         <div class="people-desc" style="color:var(--green-deep);font-weight:600"><span data-i18n="ss2d_en" class="active">Head — Animal Welfare</span><span data-i18n="ss2d_ta">தலைவர் — விலங்குகள் நல்வாழ்வு</span></div>
