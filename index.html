@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#153D2E">
+<title>Iyarkai Thayagam Arakkattalai — இயற்கை தாயகம் அறக்கட்டளை</title>
+<meta name="description" content="A registered public trust working across environment, water bodies, organ donation, animal welfare and tree plantation in Tamil Nadu.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#153D2E; --green:#1F6E4E; --green-mid:#3A8B65;
+    --green-soft:#E7F1EA; --green-tint:#F3F8F4;
+    --gold:#B9803F; --gold-deep:#8B5E2C; --gold-soft:#F5E7D2;
+    --sky:#4A8FB8; --cream:#FAF7F1; --cream-warm:#F5F0E4;
+    --ink:#1A1E17; --ink-body:#2E3229; --ink-soft:#575C50; --ink-mute:#8A8F7F;
+    --line:#E4DDC9; --line-soft:#F0EBDD; --white:#FFFFFF;
+    --f-display:'Fraunces','Noto Serif Tamil',Georgia,serif;
+    --f-body:'Inter','Noto Sans Tamil',-apple-system,BlinkMacSystemFont,sans-serif;
+    --s-1:4px;--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--s-8:64px;--s-9:96px;
+    --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+    --shadow-sm:0 1px 2px rgba(21,61,46,0.04),0 2px 8px rgba(21,61,46,0.04);
+    --shadow-md:0 4px 12px rgba(21,61,46,0.06),0 8px 24px rgba(21,61,46,0.06);
+    --shadow-lg:0 12px 32px rgba(21,61,46,0.10);
+    --ease:cubic-bezier(0.22,1,0.36,1);
+    --ease-out:cubic-bezier(0.16,1,0.3,1);
+    --dur-fast:180ms;--dur:320ms;--dur-slow:520ms;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{background:var(--cream);color:var(--ink-body);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body[data-lang="ta"]{font-family:'Noto Sans Tamil','Inter',sans-serif}
+  img,svg{display:block;max-width:100%}
+  button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  a{color:inherit;text-decoration:none;transition:color var(--dur-fast) var(--ease)}
+
+  h1,h2,h3,h4{font-family:var(--f-display);color:var(--green-deep);font-weight:600;line-height:1.12;letter-spacing:-0.015em}
+  body[data-lang="ta"] h1,body[data-lang="ta"] h2,body[data-lang="ta"] h3,body[data-lang="ta"] h4{font-family:'Noto Serif Tamil',serif;letter-spacing:0}
+
+  [data-i18n]{display:none}
+  [data-i18n].active{display:block}
+  span[data-i18n].active,strong[data-i18n].active,em[data-i18n].active,li[data-i18n].active{display:inline}
+
+  .wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 var(--s-5)}
+  @media(min-width:768px){.wrap{padding:0 var(--s-6)}}
+  @media(min-width:1024px){.wrap{padding:0 var(--s-7)}}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:var(--s-2);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);background:var(--green-soft);padding:6px 12px;border-radius:var(--r-pill)}
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+  body[data-lang="ta"] .eyebrow{letter-spacing:0;text-transform:none;font-size:13px}
+
+  section{padding:var(--s-8) 0;position:relative}
+  @media(min-width:768px){section{padding:var(--s-9) 0}}
+
+  .section-head{max-width:640px;margin-bottom:var(--s-7)}
+  .section-head .eyebrow{margin-bottom:var(--s-4)}
+  .section-head h2{font-size:clamp(28px,4vw,40px);margin-bottom:var(--s-4)}
+  .section-head p{font-size:clamp(15px,1.4vw,17px);color:var(--ink-soft);max-width:560px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-2);font-size:15px;font-weight:600;padding:14px 24px;border-radius:var(--r-pill);transition:transform var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);white-space:nowrap;-webkit-tap-highlight-color:transparent}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+  .btn-primary{background:var(--green-deep);color:var(--white)}
+  .btn-primary:hover{background:var(--green);box-shadow:var(--shadow-md)}
+  .btn-gold{background:var(--gold);color:var(--white)}
+  .btn-gold:hover{background:var(--gold-deep);box-shadow:var(--shadow-md)}
+  .btn-outline{background:transparent;color:var(--green-deep);border:1.5px solid var(--green-deep)}
+  .btn-outline:hover{background:var(--green-deep);color:var(--white)}
+  .btn-white{background:var(--white);color:var(--green-deep)}
+  .btn-white:hover{box-shadow:var(--shadow-md)}
+  .btn .arr{display:inline-block;transition:transform var(--dur-fast) var(--ease)}
+  .btn:hover .arr{transform:translateX(3px)}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:100;background:rgba(250,247,241,0.88);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
+  header.scrolled{background:rgba(250,247,241,0.96);border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);padding:var(--s-3) 0}
+  @media(min-width:768px){.nav{padding:var(--s-4) 0}}
+  .brand{display:flex;align-items:center;gap:var(--s-3);flex-shrink:0}
+  .brand-logo{width:44px;height:44px;border-radius:50%;object-fit:cover}
+  @media(min-width:768px){.brand-logo{width:48px;height:48px}}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15}
+  .brand-text .name{font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--green-deep)}
+  body[data-lang="ta"] .brand-text .name{font-family:'Noto Serif Tamil',serif}
+  @media(min-width:768px){.brand-text .name{font-size:17px}}
+  .brand-text .sub{font-family:var(--f-body);font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-mute);margin-top:2px}
+  body[data-lang="ta"] .brand-text .sub{letter-spacing:0;text-transform:none;font-size:12px}
+
+  nav.primary{display:none}
+  @media(min-width:900px){
+    nav.primary{display:flex;align-items:center;gap:var(--s-6);font-size:15px;font-weight:500}
+    nav.primary a{position:relative;padding:6px 0;color:var(--ink-body)}
+    nav.primary a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform var(--dur) var(--ease)}
+    nav.primary a:hover{color:var(--green-deep)}
+    nav.primary a:hover::after{transform:scaleX(1)}
+  }
+  .nav-right{display:flex;align-items:center;gap:var(--s-3)}
+
+  .lang-toggle{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:var(--r-pill);padding:3px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.02)}
+  .lang-toggle button{padding:6px 14px;font-size:12px;font-weight:600;letter-spacing:0.02em;color:var(--ink-mute);border-radius:var(--r-pill);transition:color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease)}
+  .lang-toggle button.active{background:var(--green-deep);color:var(--white)}
+  .lang-toggle button:not(.active):hover{color:var(--green-deep)}
+
+  .btn-nav-donate{background:var(--gold);color:var(--white);padding:10px 18px;border-radius:var(--r-pill);font-size:14px;font-weight:600;transition:background var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);display:none}
+  @media(min-width:640px){.btn-nav-donate{display:inline-flex}}
+  .btn-nav-donate:hover{background:var(--gold-deep);box-shadow:var(--shadow-sm)}
+
+  .menu-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--r-md);color:var(--green-deep)}
+  @media(min-width:900px){.menu-toggle{display:none}}
+  .menu-toggle svg{width:22px;height:22px}
+
+  .mobile-drawer{position:fixed;top:0;right:0;bottom:0;width:min(320px,85vw);background:var(--cream);padding:var(--s-7) var(--s-5);z-index:200;transform:translateX(100%);transition:transform var(--dur) var(--ease-out);box-shadow:-20px 0 60px rgba(0,0,0,0.12);display:flex;flex-direction:column;gap:var(--s-4)}
+  .mobile-drawer.open{transform:translateX(0)}
+  .mobile-drawer a{font-size:18px;font-weight:500;padding:var(--s-3) 0;border-bottom:1px solid var(--line-soft);color:var(--ink-body)}
+  .mobile-drawer .close{align-self:flex-end;width:40px;height:40px;border-radius:var(--r-md);color:var(--green-deep);margin-bottom:var(--s-4)}
+  .drawer-backdrop{position:fixed;inset:0;background:rgba(21,30,23,0.35);opacity:0;pointer-events:none;transition:opacity var(--dur) var(--ease);z-index:150}
+  .drawer-backdrop.open{opacity:1;pointer-events:auto}
+
+  /* HERO */
+  .hero{padding:var(--s-8) 0 var(--s-9);position:relative;overflow:hidden}
+  @media(min-width:768px){.hero{padding:var(--s-9) 0 calc(var(--s-9) + var(--s-6))}}
+  .hero::before{content:"";position:absolute;top:-180px;right:-180px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle at center,var(--green-soft) 0%,transparent 65%);z-index:0;pointer-events:none}
+  .hero::after{content:"";position:absolute;bottom:-120px;left:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle at center,var(--gold-soft) 0%,transparent 65%);z-index:0;pointer-events:none;opacity:0.6}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:var(--s-7);align-items:center}
+  @media(min-width:900px){.hero-grid{grid-template-columns:1.15fr 0.85fr;gap:var(--s-8)}}
+
+  .hero-eyebrow{margin-bottom:var(--s-5)}
+  .hero h1{font-size:clamp(34px,6vw,60px);letter-spacing:-0.02em;margin-bottom:var(--s-5)}
+  .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
+  body[data-lang="ta"] .hero h1 em{font-style:normal}
+  .hero .lede{font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);max-width:540px;margin-bottom:var(--s-6);line-height:1.6}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-bottom:var(--s-6)}
+  .hero-trust{display:flex;align-items:center;gap:var(--s-3);font-size:13px;color:var(--ink-soft)}
+  .hero-trust svg{color:var(--green);flex-shrink:0}
+
+  .stat-card{background:linear-gradient(160deg,var(--green-deep) 0%,#0F2E22 100%);color:var(--white);border-radius:var(--r-lg);padding:var(--s-7) var(--s-6);position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+  .stat-card::before{content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(185,128,63,0.15) 0%,transparent 70%)}
+  .stat-card .label-top{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:var(--s-4);font-weight:600}
+  body[data-lang="ta"] .stat-card .label-top{letter-spacing:0;text-transform:none;font-size:13px}
+  .stat-card .big{font-family:var(--f-display);font-size:clamp(52px,7vw,72px);line-height:0.95;color:var(--white);font-weight:600;letter-spacing:-0.03em;margin-bottom:var(--s-2);font-variant-numeric:tabular-nums}
+  body[data-lang="ta"] .stat-card .big{font-family:'Noto Serif Tamil',serif}
+  .stat-card .big-sub{font-size:14px;color:rgba(255,255,255,0.8);margin-bottom:var(--s-5)}
+  .progress{position:relative;height:10px;background:rgba(255,255,255,0.12);border-radius:var(--r-pill);overflow:hidden;margin-bottom:var(--s-3)}
+  .progress-fill{position:absolute;left:0;top:0;bottom:0;width:0%;background:linear-gradient(90deg,var(--gold) 0%,#E5A45D 100%);border-radius:var(--r-pill);transition:width 1.8s var(--ease-out)}
+  .progress-fill.animate{width:23%}
+  .progress-meta{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.7);font-variant-numeric:tabular-nums}
+
+  /* TRUST STRIP */
+  .trust-strip{padding:var(--s-6) 0;background:var(--white);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-5)}
+  @media(min-width:640px){.trust-grid{grid-template-columns:repeat(4,1fr)}}
+  .trust-item{text-align:center}
+  .trust-item .k{font-family:var(--f-display);font-size:clamp(20px,2.4vw,26px);font-weight:600;color:var(--green-deep);line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums}
+  body[data-lang="ta"] .trust-item .k{font-family:'Noto Serif Tamil',serif}
+  .trust-item .v{font-size:12px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;color:var(--ink-mute)}
+  body[data-lang="ta"] .trust-item .v{letter-spacing:0;text-transform:none;font-size:13px}
+
+  /* PILLARS */
+  .pillars-grid{display:grid;grid-template-columns:1fr;gap:var(--s-4)}
+  @media(min-width:560px){.pillars-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:900px){.pillars-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:1100px){.pillars-grid{grid-template-columns:repeat(5,1fr)}}
+
+  .pillar-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s-5);transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease);position:relative;cursor:pointer;min-height:200px;display:flex;flex-direction:column}
+  .pillar-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--green-mid)}
+  .pillar-icon{width:44px;height:44px;border-radius:12px;background:var(--green-soft);color:var(--green-deep);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s-4);transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+  .pillar-card:hover .pillar-icon{background:var(--green-deep);color:var(--white)}
+  .pillar-num{position:absolute;top:var(--s-4);right:var(--s-4);font-family:var(--f-display);font-size:13px;color:var(--gold);font-weight:700;letter-spacing:0.05em}
+  .pillar-card h3{font-size:17px;margin-bottom:var(--s-2);line-height:1.25}
+  .pillar-card p{font-size:14px;color:var(--ink-soft);line-height:1.55;flex-grow:1}
+  .pillar-head{margin-top:var(--s-4);padding-top:var(--s-3);border-top:1px solid var(--line-soft);font-size:12px;color:var(--ink-mute);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .pillar-head strong{color:var(--green-deep);font-weight:600}
+
+  /* RECENT WORK */
+  .work-section{background:var(--green-tint)}
+  .work-grid{display:grid;grid-template-columns:1fr;gap:var(--s-5)}
+  @media(min-width:640px){.work-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:960px){.work-grid{grid-template-columns:repeat(3,1fr)}}
+  .work-card{background:var(--white);border-radius:var(--r-md);overflow:hidden;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);border:1px solid var(--line-soft)}
+  .work-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .work-image{aspect-ratio:16/10;position:relative;overflow:hidden;background-size:cover;background-position:center}
+  .work-image .tag{position:absolute;top:var(--s-4);left:var(--s-4);background:rgba(255,255,255,0.95);color:var(--green-deep);font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:4px 10px;border-radius:var(--r-pill);z-index:1}
+  body[data-lang="ta"] .work-image .tag{letter-spacing:0;text-transform:none;font-size:12px}
+  .work-body{padding:var(--s-5)}
+  .work-body h3{font-size:18px;margin-bottom:var(--s-2);line-height:1.3}
+  .work-body p{font-size:14px;color:var(--ink-soft);margin-bottom:var(--s-4);line-height:1.55}
+  .work-meta{display:flex;align-items:center;gap:var(--s-3);font-size:12px;color:var(--ink-mute);padding-top:var(--s-3);border-top:1px solid var(--line-soft);flex-wrap:wrap}
+  .work-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--ink-mute)}
+
+  /* FOUNDER */
+  .founder-section{padding:var(--s-9) 0;background:var(--cream-warm)}
+  .founder-inner{display:grid;grid-template-columns:1fr;gap:var(--s-6);align-items:center}
+  @media(min-width:800px){.founder-inner{grid-template-columns:200px 1fr;gap:var(--s-7)}}
+  .founder-photo{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--green) 0%,var(--sky) 100%);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--f-display);font-size:64px;font-weight:600;margin:0 auto;position:relative;box-shadow:var(--shadow-md)}
+  @media(min-width:800px){.founder-photo{width:200px;height:200px;margin:0;font-size:80px}}
+  .founder-photo::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1.5px dashed var(--gold);opacity:0.5}
+  .founder-quote{font-family:var(--f-display);font-size:clamp(20px,2.4vw,26px);font-weight:400;font-style:italic;color:var(--green-deep);line-height:1.4;margin-bottom:var(--s-5);position:relative;padding-left:var(--s-5);border-left:3px solid var(--gold)}
+  body[data-lang="ta"] .founder-quote{font-family:'Noto Serif Tamil',serif;font-style:normal}
+  .founder-attr{font-size:14px;color:var(--ink-soft)}
+  .founder-attr strong{display:block;color:var(--green-deep);font-family:var(--f-body);font-weight:600;font-size:16px;margin-bottom:2px}
+  body[data-lang="ta"] .founder-attr strong{font-family:'Noto Sans Tamil',sans-serif}
+
+  /* MEDIA */
+  .media-grid{display:grid;grid-template-columns:1fr;gap:var(--s-5)}
+  @media(min-width:900px){.media-grid{grid-template-columns:1.4fr 1fr;gap:var(--s-6)}}
+  .video-frame{position:relative;aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden;background:var(--ink);box-shadow:var(--shadow-md)}
+
+  .insta-card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s-6);display:flex;flex-direction:column;justify-content:space-between;gap:var(--s-4);min-height:280px}
+  .insta-card h3{font-size:20px;margin-bottom:var(--s-2)}
+  .insta-card p{font-size:14px;color:var(--ink-soft)}
+  .insta-mockup{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border-radius:var(--r-sm);overflow:hidden;margin-bottom:var(--s-3)}
+  .insta-mockup>div{aspect-ratio:1;background:linear-gradient(135deg,var(--green-soft),var(--gold-soft))}
+
+  /* CALC */
+  .calc-section{background:var(--green-deep);color:var(--white)}
+  .calc-section .eyebrow{background:rgba(255,255,255,0.1);color:var(--gold-soft)}
+  .calc-section .eyebrow::before{background:var(--gold)}
+  .calc-section h2{color:var(--white)}
+  .calc-section .section-head p{color:rgba(255,255,255,0.75)}
+  .calc-inner{display:grid;grid-template-columns:1fr;gap:var(--s-7);align-items:center}
+  @media(min-width:900px){.calc-inner{grid-template-columns:1fr 1fr;gap:var(--s-8)}}
+  .slider-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-lg);padding:var(--s-6)}
+  .slider-label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--s-3);flex-wrap:wrap;gap:var(--s-2)}
+  .slider-label span{font-size:13px;color:rgba(255,255,255,0.7)}
+  .slider-amount{font-family:var(--f-display);font-size:40px;color:var(--white);font-weight:600;font-variant-numeric:tabular-nums}
+  body[data-lang="ta"] .slider-amount{font-family:'Noto Serif Tamil',serif}
+  input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(255,255,255,0.15);border-radius:var(--r-pill);outline:none;margin:var(--s-4) 0}
+  input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;background:var(--gold);border-radius:50%;cursor:grab;border:3px solid var(--white);box-shadow:0 4px 12px rgba(0,0,0,0.2);transition:transform var(--dur-fast) var(--ease)}
+  input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+  .slider-ticks{display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:var(--s-5);font-variant-numeric:tabular-nums}
+  .impact-list{list-style:none;display:flex;flex-direction:column;gap:var(--s-3)}
+  .impact-list li{display:flex;align-items:center;gap:var(--s-3);padding:var(--s-3) var(--s-4);background:rgba(255,255,255,0.03);border-radius:var(--r-sm);font-size:14px;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease);border-left:3px solid transparent}
+  .impact-list li.highlight{background:rgba(185,128,63,0.15);border-left-color:var(--gold)}
+  .impact-list .num{font-family:var(--f-display);font-size:24px;color:var(--gold);font-weight:600;min-width:48px;font-variant-numeric:tabular-nums}
+
+  /* FOOTER */
+  footer{background:var(--green-deep);color:rgba(255,255,255,0.75);padding:var(--s-8) 0 var(--s-5)}
+  .footer-grid{display:grid;grid-template-columns:1fr;gap:var(--s-6);margin-bottom:var(--s-7);padding-bottom:var(--s-7);border-bottom:1px solid rgba(255,255,255,0.1)}
+  @media(min-width:700px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr 1fr;gap:var(--s-6)}}
+  .footer-brand{display:flex;gap:var(--s-3);align-items:center;margin-bottom:var(--s-4)}
+  .footer-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+  .footer-brand .name{font-family:var(--f-display);color:var(--white);font-size:16px;font-weight:600;line-height:1.2}
+  body[data-lang="ta"] .footer-brand .name{font-family:'Noto Serif Tamil',serif}
+  .footer-brand .sub{font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.05em;text-transform:uppercase}
+  body[data-lang="ta"] .footer-brand .sub{letter-spacing:0;text-transform:none;font-size:12px}
+  footer p{font-size:14px;line-height:1.6;max-width:320px}
+  footer h4{color:var(--white);font-size:13px;margin-bottom:var(--s-4);letter-spacing:0.05em;text-transform:uppercase;font-family:var(--f-body);font-weight:600}
+  body[data-lang="ta"] footer h4{letter-spacing:0;text-transform:none;font-size:14px;font-family:'Noto Sans Tamil',sans-serif}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:var(--s-3);font-size:14px}
+  footer ul a{color:rgba(255,255,255,0.7);transition:color var(--dur-fast) var(--ease)}
+  footer ul a:hover{color:var(--white)}
+  .socials{display:flex;gap:var(--s-3);margin-top:var(--s-4)}
+  .socials a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.75);transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+  .socials a:hover{background:var(--gold);color:var(--white)}
+  .socials svg{width:16px;height:16px}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s-3);font-size:12px;color:rgba(255,255,255,0.5)}
+  .footer-bottom a{color:inherit}
+  .footer-bottom a:hover{color:var(--white)}
+
+  /* MOBILE STICKY DONATE */
+  .mobile-donate-bar{position:fixed;left:var(--s-4);right:var(--s-4);bottom:var(--s-4);z-index:90;background:var(--gold);color:var(--white);padding:14px 20px;border-radius:var(--r-pill);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:var(--s-2);box-shadow:0 8px 24px rgba(185,128,63,0.4);transform:translateY(120%);transition:transform var(--dur) var(--ease-out)}
+  .mobile-donate-bar.visible{transform:translateY(0)}
+  @media(min-width:640px){.mobile-donate-bar{display:none}}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity 800ms var(--ease-out),transform 800ms var(--ease-out)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-stagger>*{opacity:0;transform:translateY(16px);transition:opacity 600ms var(--ease-out),transform 600ms var(--ease-out)}
+  .reveal-stagger.in>*{opacity:1;transform:translateY(0)}
+  .reveal-stagger.in>*:nth-child(1){transition-delay:0ms}
+  .reveal-stagger.in>*:nth-child(2){transition-delay:80ms}
+  .reveal-stagger.in>*:nth-child(3){transition-delay:160ms}
+  .reveal-stagger.in>*:nth-child(4){transition-delay:240ms}
+  .reveal-stagger.in>*:nth-child(5){transition-delay:320ms}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
+    .reveal,.reveal-stagger>*{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body data-lang="en">
+
+<header id="header">
+  <div class="wrap">
+    <div class="nav">
+      <a href="index.html" class="brand" aria-label="Iyarkai Thayagam home">
+        <img src="logo.png" alt="Iyarkai Thayagam Logo" class="brand-logo">
+        <div class="brand-text">
+          <span class="name">
+            <span data-i18n="brand_name_en" class="active">Iyarkai Thayagam</span>
+            <span data-i18n="brand_name_ta">இயற்கை தாயகம்</span>
+          </span>
+          <span class="sub">
+            <span data-i18n="brand_sub_en" class="active">Arakkattalai · Public Trust</span>
+            <span data-i18n="brand_sub_ta">அறக்கட்டளை</span>
+          </span>
+        </div>
+      </a>
+      <nav class="primary" aria-label="Primary">
+        <a href="about.html"><span data-i18n="nav_about_en" class="active">About Us</span><span data-i18n="nav_about_ta">எங்களைப் பற்றி</span></a>
+        <a href="our-work.html"><span data-i18n="nav_work_en" class="active">Our Work</span><span data-i18n="nav_work_ta">எங்கள் பணி</span></a>
+        <a href="our-people.html"><span data-i18n="nav_people_en" class="active">Our People</span><span data-i18n="nav_people_ta">எங்கள் குழு</span></a>
+        <a href="get-involved.html"><span data-i18n="nav_involved_en" class="active">Get Involved</span><span data-i18n="nav_involved_ta">பங்கேற்க</span></a>
+        <a href="contact.html"><span data-i18n="nav_contact_en" class="active">Contact</span><span data-i18n="nav_contact_ta">தொடர்புக்கு</span></a>
+      </nav>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language selection">
+          <button id="btn-en" class="active" onclick="setLang('en')" aria-label="English">EN</button>
+          <button id="btn-ta" onclick="setLang('ta')" aria-label="Tamil">தமிழ்</button>
+        </div>
+        <a href="get-involved.html#donate" class="btn-nav-donate">
+          <span data-i18n="nav_donate_en" class="active">Donate</span>
+          <span data-i18n="nav_donate_ta">நன்கொடை</span>
+        </a>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-backdrop" onclick="toggleMenu()"></div>
+<aside class="mobile-drawer" aria-label="Mobile menu">
+  <button class="close" onclick="toggleMenu()" aria-label="Close menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/>
+    </svg>
+  </button>
+  <a href="about.html" onclick="toggleMenu()"><span data-i18n="nav_about_en" class="active">About Us</span><span data-i18n="nav_about_ta">எங்களைப் பற்றி</span></a>
+  <a href="our-work.html" onclick="toggleMenu()"><span data-i18n="nav_work_en" class="active">Our Work</span><span data-i18n="nav_work_ta">எங்கள் பணி</span></a>
+  <a href="our-people.html" onclick="toggleMenu()"><span data-i18n="nav_people_en" class="active">Our People</span><span data-i18n="nav_people_ta">எங்கள் குழு</span></a>
+  <a href="get-involved.html" onclick="toggleMenu()"><span data-i18n="nav_involved_en" class="active">Get Involved</span><span data-i18n="nav_involved_ta">பங்கேற்க</span></a>
+  <a href="contact.html" onclick="toggleMenu()"><span data-i18n="nav_contact_en" class="active">Contact</span><span data-i18n="nav_contact_ta">தொடர்புக்கு</span></a>
+  <a href="get-involved.html#donate" class="btn btn-gold" style="margin-top:auto;" onclick="toggleMenu()">
+    <span data-i18n="nav_donate_en" class="active">Donate</span>
+    <span data-i18n="nav_donate_ta">நன்கொடை</span>
+  </a>
+</aside>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="eyebrow hero-eyebrow">
+          <span data-i18n="hero_eb_en" class="active">Registered Public Trust · Tamil Nadu</span>
+          <span data-i18n="hero_eb_ta">பதிவு செய்யப்பட்ட அறக்கட்டளை · தமிழ்நாடு</span>
+        </span>
+        <h1>
+          <span data-i18n="hero_h1_en" class="active">Restoring nature,<br><em>one village at a time.</em></span>
+          <span data-i18n="hero_h1_ta">இயற்கையை மீட்டெடுக்கும்<br><em>ஒரு பயணம்.</em></span>
+        </h1>
+        <p class="lede">
+          <span data-i18n="hero_lede_en" class="active">A community-led trust working across environment, water bodies, organ donation, animal welfare and tree plantation — with 12 leaders and a growing volunteer network across Tamil Nadu.</span>
+          <span data-i18n="hero_lede_ta">சுற்றுச்சூழல், நீர்நிலைகள், உடலுறுப்பு தானம், விலங்கு நலன், மரக்கன்றுகள் நடுதல் ஆகிய ஐந்து முக்கிய துறைகளில் தமிழகம் முழுவதும் இயங்கும் ஒரு சமூக அறக்கட்டளை.</span>
+        </p>
+        <div class="hero-ctas">
+          <a href="get-involved.html#donate" class="btn btn-gold">
+            <span data-i18n="hero_c1_en" class="active">Support our mission</span>
+            <span data-i18n="hero_c1_ta">பணிக்கு உதவுங்கள்</span>
+            <span class="arr">→</span>
+          </a>
+          <a href="get-involved.html" class="btn btn-outline">
+            <span data-i18n="hero_c2_en" class="active">Become a volunteer</span>
+            <span data-i18n="hero_c2_ta">தன்னார்வலராக இணையுங்கள்</span>
+          </a>
+        </div>
+        <div class="hero-trust">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span data-i18n="hero_tr_en" class="active">Official plantation partner — Tamil Nadu Forest Dept.</span>
+          <span data-i18n="hero_tr_ta">அதிகாரப்பூர்வ கூட்டாளி — தமிழ்நாடு வனத்துறை</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="stat-card">
+          <div class="label-top">
+            <span data-i18n="sc_lbl_en" class="active">Palm Tree Mission Goal</span>
+            <span data-i18n="sc_lbl_ta">பனை மரங்கள் நடுதல் இலக்கு</span>
+          </div>
+          <div class="big" id="counter" data-target="100000">0</div>
+          <div class="big-sub">
+            <span data-i18n="sc_sub_en" class="active">Palm trees to be planted across Tamil Nadu</span>
+            <span data-i18n="sc_sub_ta">தமிழகம் முழுவதும் நடப்பட உள்ள பனை மரங்கள்</span>
+          </div>
+          <div class="progress">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-meta">
+            <span><span data-i18n="sc_p1_en" class="active">23,000+ Planted</span><span data-i18n="sc_p1_ta">23,000+ நடப்பட்டது</span></span>
+            <span>23%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="k">12</div>
+        <div class="v"><span data-i18n="ts1_en" class="active">Trust Leaders</span><span data-i18n="ts1_ta">பொறுப்பாளர்கள்</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="k">5</div>
+        <div class="v"><span data-i18n="ts2_en" class="active">Focus Areas</span><span data-i18n="ts2_ta">செயல்பாட்டுத் துறைகள்</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="k">23,000+</div>
+        <div class="v"><span data-i18n="ts3_en" class="active">Trees Planted</span><span data-i18n="ts3_ta">மரங்கள் நடப்பட்டன</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="k">100%</div>
+        <div class="v"><span data-i18n="ts4_en" class="active">Volunteer Driven</span><span data-i18n="ts4_ta">தன்னார்வ இயக்கம்</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span data-i18n="pil_eb_en" class="active">Five Pillars</span><span data-i18n="pil_eb_ta">ஐந்து முக்கியத் தூண்கள்</span></span>
+      <h2><span data-i18n="pil_h2_en" class="active">Where we focus our work</span><span data-i18n="pil_h2_ta">எங்கள் முதன்மைச் செயல்பாடுகள்</span></h2>
+      <p><span data-i18n="pil_p_en" class="active">Every pillar is led by a dedicated state secretary and team of volunteers on the ground.</span><span data-i18n="pil_p_ta">ஒவ்வொரு துறையும் பிரத்யேக பொறுப்பாளர்கள் மற்றும் தன்னார்வலர் குழுவால் சிறப்பாக நடத்தப்படுகிறது.</span></p>
+    </div>
+    <div class="pillars-grid reveal-stagger">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3><span data-i18n="p1t_en" class="active">Environmental Protection</span><span data-i18n="p1t_ta">சுற்றுச்சூழல் பாதுகாப்பு</span></h3>
+        <p><span data-i18n="p1d_en" class="active">Awareness campaigns, plastic cleanup and eco-restoration.</span><span data-i18n="p1d_ta">சுற்றுச்சூழல் விழிப்புணர்வு பிரச்சாரங்கள், நெகிழி ஒழிப்பு மற்றும் இயற்கை பாதுகாப்பு.</span></p>
+        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Kannadhasan (கண்ணதாசன்)</strong></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <h3><span data-i18n="p2t_en" class="active">Water Bodies Protection</span><span data-i18n="p2t_ta">நீர்நிலைகள் பாதுகாப்பு</span></h3>
+        <p><span data-i18n="p2d_en" class="active">Desilting, restoration of village lakes, ponds and water channels.</span><span data-i18n="p2d_ta">கிராமப்புறக் குளங்கள், ஏரிகள் மற்றும் நீர்வரத்துக் கால்வாய்களைத் தூர்வாரி பராமரித்தல்.</span></p>
+        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Mohana Sundaram (மோகன சுந்தரம்)</strong></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3><span data-i18n="p3t_en" class="active">Organ Donation</span><span data-i18n="p3t_ta">உடலுறுப்பு தானம்</span></h3>
+        <p><span data-i18n="p3d_en" class="active">Pledge drives, medical volunteer sessions and awareness meets.</span><span data-i18n="p3d_ta">உடலுறுப்பு தான விழிப்புணர்வு முகாம்கள், ஆதரவுப் படிவங்கள் மற்றும் மருத்துவ வழிகாட்டுதல்.</span></p>
+        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Nagaraj (நாகராஜ்)</strong></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="6" r="2"/><circle cx="17" cy="6" r="2"/><circle cx="12" cy="17" r="3"/></svg></div>
+        <h3><span data-i18n="p4t_en" class="active">Animal Welfare</span><span data-i18n="p4t_ta">விலங்குகள் நல்வாழ்வு</span></h3>
+        <p><span data-i18n="p4d_en" class="active">Care for stray animals, rescue support and legal protections.</span><span data-i18n="p4d_ta">தெருவிலங்குகளைப் பராமரித்தல், முதலுதவி பாதுகாப்பு மற்றும் சட்டப் பாதுகாப்பு.</span></p>
+        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Ajith Kumar (அஜித் குமார்)</strong></div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">05</div>
+        <div class="pillar-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c-3 4-3 7 0 10 3-3 3-6 0-10z"/><path d="M12 12v10M7 18l5-2 5 2"/></svg></div>
+        <h3><span data-i18n="p5t_en" class="active">Tree Plantation</span><span data-i18n="p5t_ta">மரக்கன்றுகள் நடுதல்</span></h3>
+        <p><span data-i18n="p5d_en" class="active">Our flagship mission — 1,00,000 palm trees across Tamil Nadu.</span><span data-i18n="p5d_ta">எங்கள் முதன்மைப் பணி — தமிழகம் முழுவதும் 1,00,000 பனை மரங்கள் நடும் திட்டம்.</span></p>
+        <div class="pillar-head"><span data-i18n="p_led_en" class="active">Led by</span><span data-i18n="p_led_ta">தலைவர்:</span><strong>Suresh Veerasamy (சுரேஷ் வீராசாமி)</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT WORK -->
+<section class="work-section" id="impact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span data-i18n="work_eb_en" class="active">In Action</span><span data-i18n="work_eb_ta">களப் பணிகள்</span></span>
+      <h2><span data-i18n="work_h2_en" class="active">Recent work on the ground</span><span data-i18n="work_h2_ta">களத்தில் சமீபத்திய சாதனைகள்</span></h2>
+      <p><span data-i18n="work_p_en" class="active">Every activity below is verifiable — with real photos, locations and partners.</span><span data-i18n="work_p_ta">கீழே உள்ள ஒவ்வொரு நடவடிக்கையும் உண்மையான புகைப்படங்கள் மற்றும் கள ஆதாரங்களுடன் சரிபார்க்கத்தக்கது.</span></p>
+    </div>
+    <div class="work-grid reveal-stagger">
+      <div class="work-card">
+        <div class="work-image" style="background-image: url('assets/kundrathur_drive.jpg');">
+          <span class="tag"><span data-i18n="w_tag1_en" class="active">Plantation</span><span data-i18n="w_tag1_ta">நடவு</span></span>
+        </div>
+        <div class="work-body">
+          <h3><span data-i18n="w1t_en" class="active">Kundrathur Temple Palm Seed Drive</span><span data-i18n="w1t_ta">குன்றத்தூர் கோவில் பனை விதை நடும் இயக்கம்</span></h3>
+          <p><span data-i18n="w1d_en" class="active">Community plantation drive around the historic temple grounds, engaging local families and youth.</span><span data-i18n="w1d_ta">வரலாற்றுச் சிறப்புமிக்க குன்றத்தூர் கோவில் வளாகத்தில் பொதுமக்கள் மற்றும் இளைஞர்களுடன் நடைபெற்ற நடும் திட்டம்.</span></p>
+          <div class="work-meta">
+            <span><span data-i18n="w1m1_en" class="active">Kundrathur</span><span data-i18n="w1m1_ta">குன்றத்தூர்</span></span>
+            <span class="dot"></span>
+            <span><span data-i18n="w1m2_en" class="active">Community-led</span><span data-i18n="w1m2_ta">சமூக இயக்கம்</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-image" style="background-image: url('assets/mannur_forest.jpg');">
+          <span class="tag"><span data-i18n="w_tag2_en" class="active">Partnership</span><span data-i18n="w_tag2_ta">கூட்டாண்மை</span></span>
+        </div>
+        <div class="work-body">
+          <h3><span data-i18n="w2t_en" class="active">Mannur Forest Department Drive</span><span data-i18n="w2t_ta">மன்னூர் காப்பு வன பனை விதை நடவு (2,000 விதைகள்)</span></h3>
+          <p><span data-i18n="w2d_en" class="active">2,000 palm seeds planted in partnership with the Tamil Nadu Forest Department at Kapu Forest.</span><span data-i18n="w2d_ta">தமிழ்நாடு வனத்துறையுடன் இணைந்து மன்னூர் காப்பு வனப் பகுதியில் 2,000 பனை விதைகள் நடப்பட்டன.</span></p>
+          <div class="work-meta">
+            <span><span data-i18n="w2m1_en" class="active">Mannur</span><span data-i18n="w2m1_ta">மன்னூர்</span></span>
+            <span class="dot"></span>
+            <span>2,000+ seeds</span>
+          </div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-image" style="background-image: url('assets/organ_donation.jpg');">
+          <span class="tag"><span data-i18n="w_tag3_en" class="active">Awareness</span><span data-i18n="w_tag3_ta">விழிப்புணர்வு</span></span>
+        </div>
+        <div class="work-body">
+          <h3><span data-i18n="w3t_en" class="active">Organ Donation Awareness Meet</span><span data-i18n="w3t_ta">உறுப்பு தான விழிப்புணர்வு கூட்டம்</span></h3>
+          <p><span data-i18n="w3d_en" class="active">Community session bringing together 20+ pledges and open Q&amp;A with medical volunteers.</span><span data-i18n="w3d_ta">20+ உறுப்பு தான ஆதரவுப் படிவங்கள் மற்றும் மருத்துவர்களுடனான கேள்வி பதில் நிகழ்வு.</span></p>
+          <div class="work-meta">
+            <span><span data-i18n="w3m1_en" class="active">Chennai</span><span data-i18n="w3m1_ta">சென்னை</span></span>
+            <span class="dot"></span>
+            <span>20+ pledges</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-section" id="people">
+  <div class="wrap">
+    <div class="founder-inner reveal">
+      <div class="founder-photo">இ</div>
+      <div>
+        <span class="eyebrow" style="margin-bottom:var(--s-4)">
+          <span data-i18n="fnd_eb_en" class="active">From our President</span>
+          <span data-i18n="fnd_eb_ta">தலைவரின் உரை</span>
+        </span>
+        <p class="founder-quote">
+          <span data-i18n="fnd_q_en" class="active">"We didn't start this trust to make a statement. We started it because our villages were losing their trees, our lakes were drying, and no one was talking about it. Every seed we plant is a promise to the next generation."</span>
+          <span data-i18n="fnd_q_ta">"ஒரு அறிக்கை வெளியிட இந்த அறக்கட்டளையை ஆரம்பிக்கவில்லை. எங்கள் கிராமங்கள் மரங்களை இழந்தன, ஏரிகள் வற்றின, எவரும் பேசவில்லை — அதனால் தொடங்கினோம். ஒவ்வொரு விதையும் அடுத்த தலைமுறைக்கான வாக்குறுதி."</span>
+        </p>
+        <div class="founder-attr">
+          <strong>Ilagovan (இளங்கோவன்)</strong>
+          <span data-i18n="fnd_role_en" class="active">President, Iyarkai Thayagam Arakkattalai</span>
+          <span data-i18n="fnd_role_ta">தலைவர், இயற்கை தாயகம் அறக்கட்டளை</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span data-i18n="med_eb_en" class="active">See It Yourself</span><span data-i18n="med_eb_ta">நேரடியாகக் காணுங்கள்</span></span>
+      <h2><span data-i18n="med_h2_en" class="active">Watch us in action</span><span data-i18n="med_h2_ta">எங்கள் களப் பணிகளைப் பாருங்கள்</span></h2>
+    </div>
+    <div class="media-grid reveal">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="video-frame" id="ytVideoFrame">
+          <iframe id="mainYtIframe" width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=PL3aV1h3j3p9f" title="Iyarkai Thayagam NGO Drives" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:0; position:absolute; inset:0; width:100%; height:100%;"></iframe>
+        </div>
+        <div style="display:flex; gap:10px; overflow-x:auto; padding-bottom:6px;">
+          <button onclick="changeYtVideo('https://www.youtube.com/embed/videoseries?list=PL3aV1h3j3p9f', 'Kapu Forest Plantation')" class="btn btn-outline" style="font-size:12px; padding:6px 14px; background:var(--white);">🌱 காப்பு வன நடவு</button>
+          <button onclick="changeYtVideo('https://www.youtube.com/embed/videoseries?list=PL3aV1h3j3p9f', 'Kundrathur Temple Drive')" class="btn btn-outline" style="font-size:12px; padding:6px 14px; background:var(--white);">🛕 குன்றத்தூர் கோவில்</button>
+          <button onclick="changeYtVideo('https://www.youtube.com/embed/videoseries?list=PL3aV1h3j3p9f', 'Organ Donation Meet')" class="btn btn-outline" style="font-size:12px; padding:6px 14px; background:var(--white);">❤️ உறுப்பு தான கூட்டம்</button>
+        </div>
+      </div>
+      <div class="insta-card">
+        <div>
+          <div class="insta-mockup"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          <h3><span data-i18n="ig_h3_en" class="active">Follow the journey</span><span data-i18n="ig_h3_ta">பயணத்தைப் பின்தொடருங்கள்</span></h3>
+          <p><span data-i18n="ig_p_en" class="active">Daily updates from plantation drives and awareness camps.</span><span data-i18n="ig_p_ta">அன்றாட நடவு மற்றும் விழிப்புணர்வு முகாம் நேரலை தகவல்கள்.</span></p>
+        </div>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="btn btn-outline" style="align-self:flex-start;">
+          <span>@iyarkaithayagam</span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT CALCULATOR -->
+<section class="calc-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span data-i18n="calc_eb_en" class="active">Your Impact</span><span data-i18n="calc_eb_ta">உங்கள் தாக்கம்</span></span>
+      <h2><span data-i18n="calc_h2_en" class="active">See what your donation does</span><span data-i18n="calc_h2_ta">உங்கள் நன்கொடையின் பயன்</span></h2>
+      <p><span data-i18n="calc_p_en" class="active">Slide to explore how each contribution translates to real work on the ground.</span><span data-i18n="calc_p_ta">உங்கள் நன்கொடை எப்படி களத்தில் நேரடியாகப் பயன்படுகிறது என்பதைப் பாருங்கள்.</span></p>
+    </div>
+    <div class="calc-inner reveal">
+      <div class="slider-box">
+        <div class="slider-label">
+          <span><span data-i18n="calc_amt_en" class="active">Your donation</span><span data-i18n="calc_amt_ta">உங்கள் நன்கொடை தொகை</span></span>
+          <span class="slider-amount">₹<span id="donAmount">500</span></span>
+        </div>
+        <input type="range" id="donSlider" min="100" max="10000" step="100" value="500" aria-label="Donation amount">
+        <div class="slider-ticks"><span>₹100</span><span>₹2,500</span><span>₹5,000</span><span>₹10,000</span></div>
+        <a href="get-involved.html#donate" class="btn btn-gold" style="width:100%; justify-content:center;">
+          <span data-i18n="calc_cta_en" class="active">Donate this amount</span>
+          <span data-i18n="calc_cta_ta">இந்த தொகையை வழங்கவும்</span>
+          <span class="arr">→</span>
+        </a>
+      </div>
+      <ul class="impact-list">
+        <li data-min="100"><span class="num" id="imp1">25</span><div><span data-i18n="imp1_en" class="active">Palm seeds planted</span><span data-i18n="imp1_ta">பனை விதைகள் நடப்படும்</span></div></li>
+        <li data-min="500"><span class="num" id="imp2">1</span><div><span data-i18n="imp2_en" class="active">Organ donation awareness camp</span><span data-i18n="imp2_ta">உறுப்பு தான விழிப்புணர்வு முகாம்</span></div></li>
+        <li data-min="1000"><span class="num" id="imp3">2</span><div><span data-i18n="imp3_en" class="active">Hours of pond desilting work</span><span data-i18n="imp3_ta">குளம் தூர்வாரும் பணி நேரம்</span></div></li>
+        <li data-min="2500"><span class="num" id="imp4">1</span><div><span data-i18n="imp4_en" class="active">Village awareness event fully funded</span><span data-i18n="imp4_ta">முழு கிராம விழிப்புணர்வு நிகழ்வு</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="logo.png" alt="Iyarkai Thayagam Logo">
+          <div>
+            <div class="name"><span data-i18n="f_n_en" class="active">Iyarkai Thayagam</span><span data-i18n="f_n_ta">இயற்கை தாயகம்</span></div>
+            <div class="sub">Arakkattalai</div>
+          </div>
+        </div>
+        <p><span data-i18n="f_d_en" class="active">A registered public trust working across environment, water, organ donation, animal welfare and tree plantation.</span><span data-i18n="f_d_ta">சுற்றுச்சூழல், நீர்நிலைகள், உடலுறுப்பு தானம், விலங்கு நலன் மற்றும் மரக்கன்றுகள் நடுதல் ஆகியவற்றில் இயங்கும் பதிவுசெய்யப்பட்ட அறக்கட்டளை.</span></p>
+      </div>
+      <div>
+        <h4><span data-i18n="f_ex_en" class="active">Explore</span><span data-i18n="f_ex_ta">பார்வையிடு</span></h4>
+        <ul>
+          <li><a href="about.html"><span data-i18n="fl1_en" class="active">About Us</span><span data-i18n="fl1_ta">எங்களைப் பற்றி</span></a></li>
+          <li><a href="our-work.html"><span data-i18n="fl2_en" class="active">Our Work</span><span data-i18n="fl2_ta">எங்கள் பணி</span></a></li>
+          <li><a href="our-people.html"><span data-i18n="fl3_en" class="active">Our People</span><span data-i18n="fl3_ta">எங்கள் குழு</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-i18n="f_su_en" class="active">Support</span><span data-i18n="f_su_ta">ஆதரவு</span></h4>
+        <ul>
+          <li><a href="get-involved.html"><span data-i18n="fs1_en" class="active">Volunteer</span><span data-i18n="fs1_ta">தன்னார்வலர்</span></a></li>
+          <li><a href="get-involved.html#donate"><span data-i18n="fs2_en" class="active">Donate</span><span data-i18n="fs2_ta">நன்கொடை</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-i18n="f_co_en" class="active">Contact</span><span data-i18n="f_co_ta">தொடர்பு</span></h4>
+        <ul>
+          <li>info@iyarkaithayagam.org</li>
+          <li>+91 94440 00000</li>
+          <li><span data-i18n="f_c_addr_en" class="active">Tamil Nadu, India</span><span data-i18n="f_c_addr_ta">தமிழ்நாடு, இந்தியா</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Iyarkai Thayagam Arakkattalai (இயற்கை தாயகம் அறக்கட்டளை)</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<a href="get-involved.html#donate" class="mobile-donate-bar" id="mobileDonate">
+  <span data-i18n="mob_d_en" class="active">Support the mission</span>
+  <span data-i18n="mob_d_ta">பணிக்கு உதவுங்கள்</span>
+  <span class="arr">→</span>
+</a>
+
+<script>
+  function setLang(lang){
+    document.body.setAttribute('data-lang', lang);
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(key.endsWith('_' + lang)){ el.classList.add('active'); }
+      else { el.classList.remove('active'); }
+    });
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-ta').classList.toggle('active', lang === 'ta');
+    try { localStorage.setItem('site-lang', lang); } catch(e){}
+  }
+
+  (function initLang(){
+    var saved = null;
+    try { saved = localStorage.getItem('site-lang'); } catch(e){}
+    var lang = saved || ((navigator.language || 'en').toLowerCase().startsWith('ta') ? 'ta' : 'en');
+    setLang(lang);
+  })();
+
+  function toggleMenu(){
+    document.querySelector('.mobile-drawer').classList.toggle('open');
+    document.querySelector('.drawer-backdrop').classList.toggle('open');
+    document.body.style.overflow = document.querySelector('.mobile-drawer').classList.contains('open') ? 'hidden' : '';
+  }
+
+  function changeYtVideo(url, title){
+    var iframe = document.getElementById('mainYtIframe');
+    if(iframe){
+      iframe.src = url;
+      iframe.title = title || 'Iyarkai Thayagam Video';
+    }
+  }
+
+  var header = document.getElementById('header');
+  var mobileDonate = document.getElementById('mobileDonate');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    header.classList.toggle('scrolled', y > 20);
+    mobileDonate.classList.toggle('visible', y > 400);
+  }, { passive: true });
+
+  function animateCounter(){
+    var el = document.getElementById('counter');
+    if(!el) return;
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      el.textContent = target.toLocaleString('en-IN');
+      document.getElementById('progressFill').classList.add('animate');
+      return;
+    }
+    var duration = 1600;
+    var start = performance.now();
+    function tick(now){
+      var t = Math.min(1, (now - start) / duration);
+      var eased = 1 - Math.pow(1 - t, 3);
+      var val = Math.round(target * eased);
+      el.textContent = val.toLocaleString('en-IN');
+      if(t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    setTimeout(function(){
+      document.getElementById('progressFill').classList.add('animate');
+    }, 400);
+  }
+  window.addEventListener('load', animateCounter);
+
+  var slider = document.getElementById('donSlider');
+  var amtEl = document.getElementById('donAmount');
+  var imp1 = document.getElementById('imp1');
+  var imp2 = document.getElementById('imp2');
+  var imp3 = document.getElementById('imp3');
+  var imp4 = document.getElementById('imp4');
+  var impactItems = document.querySelectorAll('.impact-list li');
+  function formatIN(n){ return n.toLocaleString('en-IN'); }
+  function updateImpact(v){
+    amtEl.textContent = formatIN(v);
+    imp1.textContent = Math.floor(v / 20);
+    imp2.textContent = Math.floor(v / 500);
+    imp3.textContent = Math.floor(v / 500);
+    imp4.textContent = Math.floor(v / 2500);
+    impactItems.forEach(function(li){
+      var min = parseInt(li.getAttribute('data-min'), 10);
+      li.classList.toggle('highlight', v >= min);
+    });
+  }
+  if(slider){
+    slider.addEventListener('input', function(){ updateImpact(parseInt(this.value, 10)); });
+    updateImpact(parseInt(slider.value, 10));
+  }
+
+  var reveals = document.querySelectorAll('.reveal, .reveal-stagger');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(function(el){ io.observe(el); });
+</script>
+
+</body>
+</html>
