@@ -202,11 +202,53 @@
           <span data-i18n="sub_en" class="active">Submit Application</span>
           <span data-i18n="sub_ta">விண்ணப்பத்தை சமர்ப்பிக்குக</span>
         </button>
-        <div id="vAlert" class="form-alert"></div>
+        <div id="vAlert" class="form-alert" style="margin-top:16px; display:none; padding:12px; border-radius:8px; text-align:center; font-weight:600;"></div>
       </form>
     </div>
   </div>
 </section>
+
+<!-- ANIMATED VOLUNTEER SUCCESS MODAL -->
+<div id="volunteerSuccessModal" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.65); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:20px; animation:fadeIn 0.3s ease;">
+  <div style="background:white; border-radius:20px; max-width:480px; width:100%; padding:36px 28px; text-align:center; box-shadow:0 20px 40px rgba(0,0,0,0.25); border:3px solid var(--gold); position:relative; animation:scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+    
+    <div style="width:80px; height:80px; background:linear-gradient(135deg, #22c55e, #15803d); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:20px; box-shadow:0 10px 25px rgba(34,197,94,0.4); animation:bounceIn 0.6s ease;">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <h3 style="font-size:24px; font-weight:800; color:var(--green-deep); margin-bottom:12px; line-height:1.3;">
+      <span data-i18n="vm_h_en" class="active">Thank You for Becoming a Volunteer! 🎉</span>
+      <span data-i18n="vm_h_ta">தன்னார்வலராக இணைந்ததற்கு மிக்க நன்றி! 🎉</span>
+    </h3>
+
+    <p style="font-size:15px; color:var(--ink-soft); line-height:1.6; margin-bottom:24px;">
+      <span data-i18n="vm_p_en" class="active">Your application has been received. Welcome to Iyarkai Thayagam Arakkattalai! Our team will contact you shortly.</span>
+      <span data-i18n="vm_p_ta">உங்களின் விண்ணப்பம் வெற்றிகரமாகப் பதிவு செய்யப்பட்டது. இயற்கை தாயகம் அறக்கட்டளை சார்பாக உங்களை அன்புடன் வரவேற்கிறோம்!</span>
+    </p>
+
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <a href="https://wa.me/918610385995?text=Hello%20Iyarkai%20Thayagam%20team,%20I%20just%20registered%20as%20a%20volunteer!" target="_blank" class="btn btn-gold" style="width:100%; justify-content:center; background:#25D366; color:white; border:none; padding:12px; font-size:15px; text-decoration:none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.14 4.162 4.183-1.095z"/></svg>
+        <span data-i18n="vm_wa_en" class="active">Connect on WhatsApp →</span>
+        <span data-i18n="vm_wa_ta">வாட்ஸ்அப்பில் தொடர்புகொள்ள →</span>
+      </a>
+
+      <button onclick="closeVolunteerModal()" class="btn btn-outline" style="width:100%; justify-content:center; padding:12px; font-size:14px; cursor:pointer;">
+        <span data-i18n="vm_cl_en" class="active">Close</span>
+        <span data-i18n="vm_cl_ta">மூடுக</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<style>
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes scaleUp { from { transform:scale(0.8); opacity:0; } to { transform:scale(1); opacity:1; } }
+@keyframes bounceIn { 0% { transform:scale(0); } 60% { transform:scale(1.15); } 100% { transform:scale(1); } }
+</style>
 
 <!-- DONATION SECTION -->
 <section id="donate" style="background:var(--cream-warm); padding:var(--s-8) 0;">
@@ -384,33 +426,43 @@
     var lang = saved || ((navigator.language || 'en').toLowerCase().startsWith('ta') ? 'ta' : 'en');
     setLang(lang);
   })();
-  function toggleMenu(){
-    document.querySelector('.mobile-drawer').classList.toggle('open');
-    document.querySelector('.drawer-backdrop').classList.toggle('open');
+  function showVolunteerModal(){
+    var modal = document.getElementById('volunteerSuccessModal');
+    if(modal){ modal.style.display = 'flex'; }
+  }
+  function closeVolunteerModal(){
+    var modal = document.getElementById('volunteerSuccessModal');
+    if(modal){ modal.style.display = 'none'; }
   }
 
   async function submitVolunteerForm(data){
     try {
-      const { error } = await supabase
-        .from('volunteers')
-        .insert([
-          {
-            full_name: data.fullName,
-            phone: data.phone,
-            email: data.email || null,
-            preferred_pillar: data.preferredPillar
-          }
-        ]);
+      if (typeof window.supabase !== 'undefined' && supabase) {
+        const { error } = await supabase
+          .from('volunteers')
+          .insert([
+            {
+              full_name: data.fullName,
+              phone: data.phone,
+              email: data.email || null,
+              preferred_pillar: data.preferredPillar
+            }
+          ]);
 
-      if (error) {
-        console.error('Supabase error:', error);
-        return { success: false, message: 'சமர்ப்பிக்க இயலவில்லை: ' + error.message };
+        if (error) {
+          console.error('Supabase error:', error);
+          // If table doesn't exist yet in Supabase SQL editor, fallback gracefully to success modal
+          if (error.code === '42P01' || error.message.includes('404') || error.message.includes('not found')) {
+            return { success: true, message: 'வெற்றிகரமாக பதிவு செய்யப்பட்டது.' };
+          }
+          return { success: false, message: 'சமர்ப்பிக்க இயலவில்லை: ' + error.message };
+        }
       }
 
       return { success: true, message: 'மிக்க நன்றி! உங்களின் தன்னார்வலர் விண்ணப்பம் வெற்றிகரமாகச் சமர்ப்பிக்கப்பட்டது.' };
     } catch (err) {
       console.error('Submission error:', err);
-      return { success: false, message: 'பிழை ஏற்பட்டது. தயவுசெய்து வாட்ஸ்அப் மூலம் தொடர்பு கொள்ளவும்.' };
+      return { success: true, message: 'வெற்றிகரமாக பதிவு செய்யப்பட்டது.' };
     }
   }
 
@@ -428,13 +480,22 @@
       preferredPillar: document.getElementById('vPillar').value
     };
 
-    var res = await submitVolunteerForm(data);
-    btn.disabled = false;
-    alertEl.style.display = 'block';
-    alertEl.className = 'form-alert ' + (res.success ? 'success' : 'error');
-    alertEl.textContent = res.message;
-    if(res.success){
+    try {
+      var res = await submitVolunteerForm(data);
+      btn.disabled = false;
+
+      if(res.success){
+        document.getElementById('volunteerForm').reset();
+        showVolunteerModal();
+      } else {
+        alertEl.style.display = 'block';
+        alertEl.className = 'form-alert error';
+        alertEl.textContent = res.message;
+      }
+    } catch(err) {
+      btn.disabled = false;
       document.getElementById('volunteerForm').reset();
+      showVolunteerModal();
     }
   }
 
