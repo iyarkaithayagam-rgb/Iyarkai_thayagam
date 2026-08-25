@@ -176,13 +176,25 @@
       <span data-i18n="cl_t_en" class="active">Executive Leadership</span>
       <span data-i18n="cl_t_ta">முதன்மை நிர்வாகிகள்</span>
     </h2>
-    <div class="people-grid">
-      <div class="people-card">
+    
+    <!-- FIRST ROW: FOUNDER & PRESIDENT (2 LEADERS) -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:var(--s-6); margin-bottom:var(--s-6);">
+      <div class="people-card" style="border:2px solid var(--gold); background:linear-gradient(180deg,#ffffff,#fffdf5);">
+        <img src="assets/kannadhasan.jpg" alt="Kannadhasan Photo" class="people-img">
+        <div class="people-name">Kannadhasan (கண்ணதாசன்)</div>
+        <div class="people-title" style="color:var(--gold-deep); font-weight:700;"><span data-i18n="r0_en" class="active">Founder & Joint Secretary</span><span data-i18n="r0_ta">நிறுவனர் & இணைச் செயலாளர்</span></div>
+        <div class="people-desc" style="color:var(--green-deep); font-weight:600;"><span data-i18n="r0d_en" class="active">Founder of Iyarkai Thayagam Arakkattalai & Head — Environmental Protection.</span><span data-i18n="r0d_ta">இயற்கை தாயகம் அறக்கட்டளை நிறுவனர் & தலைவர் — சுற்றுச்சூழல் பாதுகாப்பு.</span></div>
+      </div>
+      <div class="people-card" style="border:2px solid var(--gold); background:linear-gradient(180deg,#ffffff,#fffdf5);">
         <img src="assets/ilagovan.jpg" alt="Ilagovan Photo" class="people-img">
         <div class="people-name">Ilagovan (இளங்கோவன்)</div>
-        <div class="people-title"><span data-i18n="r1_en" class="active">President</span><span data-i18n="r1_ta">தலைவர்</span></div>
+        <div class="people-title" style="color:var(--gold-deep); font-weight:700;"><span data-i18n="r1_en" class="active">President</span><span data-i18n="r1_ta">தலைவர்</span></div>
         <div class="people-desc"><span data-i18n="r1d_en" class="active">Guides overall vision, strategic partnerships and trust governance.</span><span data-i18n="r1d_ta">அறக்கட்டளையின் ஒட்டுமொத்த தொலைநோக்கு பார்வை மற்றும் வழிகாட்டுதலை வழங்குகிறார்.</span></div>
       </div>
+    </div>
+
+    <!-- SECOND ROW: NAGARAJ, SUGUMAR, MOHANA SUNDARAM (3 LEADERS) -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:var(--s-6);">
       <div class="people-card">
         <img src="assets/nagaraj.jpg" alt="Nagaraj Photo" class="people-img">
         <div class="people-name">Nagaraj (நாகராஜ்)</div>
@@ -190,18 +202,19 @@
         <div class="people-desc"><span data-i18n="r2d_en" class="active">Oversees daily operations and leads Organ Donation initiatives.</span><span data-i18n="r2d_ta">அன்றாட செயல்பாடுகளை மேற்பார்வையிட்டு, உடலுறுப்பு தான விழிப்புணர்வை முன்னெடுக்கிறார்.</span></div>
       </div>
       <div class="people-card">
-        <img src="assets/mohana_sundaram.jpg" alt="Mohana Sundaram Photo" class="people-img">
-        <div class="people-name">Mohana Sundaram (மோகன சுந்தரம்)</div>
-        <div class="people-title"><span data-i18n="r3_en" class="active">General Secretary</span><span data-i18n="r3_ta">பொதுச் செயலாளர்</span></div>
-        <div class="people-desc"><span data-i18n="r3d_en" class="active">Manages administration and leads Water Bodies Conservation.</span><span data-i18n="r3d_ta">செயலகப் பணிகளை நிர்வகித்து, நீர்நிலைகள் பாதுகாப்புப் பணிகளுக்குத் தலைமை தாங்குகிறார்.</span></div>
-      </div>
-      <div class="people-card">
         <img src="assets/sugumar.jpg" alt="Sugumar Photo" class="people-img">
         <div class="people-name">Sugumar (சுகுமார்)</div>
         <div class="people-title"><span data-i18n="r4_en" class="active">Treasurer</span><span data-i18n="r4_ta">பொருளாளர்</span></div>
         <div class="people-desc"><span data-i18n="r4d_en" class="active">Ensures financial integrity, auditing and transparent fund management.</span><span data-i18n="r4d_ta">நிதி நிர்வாகம் மற்றும் வெளிப்படையான கணக்குப் பராமரிப்பை உறுதிசெய்கிறார்.</span></div>
       </div>
+      <div class="people-card">
+        <img src="assets/mohana_sundaram.jpg" alt="Mohana Sundaram Photo" class="people-img">
+        <div class="people-name">Mohana Sundaram (மோகன சுந்தரம்)</div>
+        <div class="people-title"><span data-i18n="r3_en" class="active">General Secretary</span><span data-i18n="r3_ta">பொதுச் செயலாளர்</span></div>
+        <div class="people-desc"><span data-i18n="r3d_en" class="active">Manages administration and leads Water Bodies Conservation.</span><span data-i18n="r3d_ta">செயலகப் பணிகளை நிர்வகித்து, நீர்நிலைகள் பாதுகாப்புப் பணிகளுக்குத் தலைமை தாங்குகிறார்.</span></div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -237,12 +250,6 @@
       <span data-i18n="js_t_ta">இணைச் செயலாளர்கள் & மண்டல ஒருங்கிணைப்பாளர்கள்</span>
     </h2>
     <div class="people-grid">
-      <div class="people-card">
-        <img src="assets/kannadhasan.jpg" alt="Kannadhasan Photo" class="people-img">
-        <div class="people-name">Kannadhasan (கண்ணதாசன்)</div>
-        <div class="people-title"><span data-i18n="js_en" class="active">Joint Secretary</span><span data-i18n="js_ta">இணைச் செயலாளர்</span></div>
-        <div class="people-desc" style="color:var(--green);font-weight:600"><span data-i18n="js1d_en" class="active">Head — Environmental Protection</span><span data-i18n="js1d_ta">தலைவர் — சுற்றுச்சூழல் பாதுகாப்பு</span></div>
-      </div>
       <div class="people-card">
         <img src="assets/dhasaradhan.jpg" alt="Dhasaradhan Photo" class="people-img">
         <div class="people-name">Dhasaradhan (தசரதன்)</div>
