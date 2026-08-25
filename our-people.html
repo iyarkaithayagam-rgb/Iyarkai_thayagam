@@ -249,7 +249,9 @@
       <span data-i18n="js_t_en" class="active">Joint Secretaries & Regional Coordinators</span>
       <span data-i18n="js_t_ta">இணைச் செயலாளர்கள் & மண்டல ஒருங்கிணைப்பாளர்கள்</span>
     </h2>
-    <div class="people-grid">
+    
+    <!-- ROW 1: 3 CARDS -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:var(--s-6); margin-bottom:var(--s-6);">
       <div class="people-card">
         <img src="assets/dhasaradhan.jpg" alt="Dhasaradhan Photo" class="people-img">
         <div class="people-name">Dhasaradhan (தசரதன்)</div>
@@ -265,17 +267,22 @@
         <div class="people-name">Karan (கரன்)</div>
         <div class="people-title"><span data-i18n="js_en" class="active">Joint Secretary</span><span data-i18n="js_ta">இணைச் செயலாளர்</span></div>
       </div>
-      <div class="people-card">
+    </div>
+
+    <!-- ROW 2: 2 CARDS CENTERED -->
+    <div style="display:flex; justify-content:center; gap:var(--s-6); flex-wrap:wrap;">
+      <div class="people-card" style="flex:1; max-width:340px; min-width:260px;">
         <img src="assets/ashok_kumar.jpg" alt="Ashok Kumar Photo" class="people-img">
         <div class="people-name">Ashok Kumar (அசோக் குமார்)</div>
         <div class="people-title"><span data-i18n="js_en" class="active">Joint Secretary</span><span data-i18n="js_ta">இணைச் செயலாளர்</span></div>
       </div>
-      <div class="people-card">
+      <div class="people-card" style="flex:1; max-width:340px; min-width:260px;">
         <img src="assets/parthiparajan.jpg" alt="Parthiparajan Photo" class="people-img">
         <div class="people-name">Parthiparajan (பார்த்திபராஜன்)</div>
         <div class="people-title"><span data-i18n="js_en" class="active">Joint Secretary</span><span data-i18n="js_ta">இணைச் செயலாளர்</span></div>
       </div>
     </div>
+
   </div>
 </section>
 </main>
