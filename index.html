@@ -54,7 +54,7 @@
   @media(min-width:768px){.wrap{padding:0 var(--s-6)}}
   @media(min-width:1024px){.wrap{padding:0 var(--s-7)}}
 
-  .eyebrow{display:inline-flex;align-items:center;gap:var(--s-2);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);background:var(--green-soft);padding:6px 12px;border-radius:var(--r-pill)}
+  .eyebrow{display:inline-flex;align-items:center;flex-wrap:wrap;gap:var(--s-2);font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--green);background:var(--green-soft);padding:6px 12px;border-radius:12px;max-width:100%;white-space:normal !important;word-break:break-word}
   .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
   body[data-lang="ta"] .eyebrow{letter-spacing:0;text-transform:none;font-size:13px}
 
@@ -63,10 +63,10 @@
 
   .section-head{max-width:640px;margin-bottom:var(--s-7)}
   .section-head .eyebrow{margin-bottom:var(--s-4)}
-  .section-head h2{font-size:clamp(28px,4vw,40px);margin-bottom:var(--s-4)}
+  .section-head h2{font-size:clamp(26px,4vw,40px);margin-bottom:var(--s-4)}
   .section-head p{font-size:clamp(15px,1.4vw,17px);color:var(--ink-soft);max-width:560px}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-2);font-size:15px;font-weight:600;padding:14px 24px;border-radius:var(--r-pill);transition:transform var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);white-space:nowrap;-webkit-tap-highlight-color:transparent}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-2);font-size:15px;font-weight:600;padding:14px 24px;border-radius:var(--r-pill);transition:transform var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease);max-width:100%;-webkit-tap-highlight-color:transparent}
   .btn:hover{transform:translateY(-1px)}
   .btn:active{transform:translateY(0)}
   .btn:focus-visible{outline:2px solid var(--green);outline-offset:3px}
@@ -84,17 +84,17 @@
   /* HEADER */
   header{position:sticky;top:0;z-index:100;background:rgba(250,247,241,0.88);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease)}
   header.scrolled{background:rgba(250,247,241,0.96);border-bottom-color:var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s-4);padding:var(--s-3) 0}
-  @media(min-width:768px){.nav{padding:var(--s-4) 0}}
-  .brand{display:flex;align-items:center;gap:var(--s-3);flex-shrink:0}
-  .brand-logo{width:44px;height:44px;border-radius:50%;object-fit:cover}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);padding:var(--s-3) 0}
+  @media(min-width:768px){.nav{padding:var(--s-4) 0;gap:var(--s-4)}}
+  .brand{display:flex;align-items:center;gap:var(--s-2);flex-shrink:1;min-width:0}
+  .brand-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0}
   @media(min-width:768px){.brand-logo{width:48px;height:48px}}
-  .brand-text{display:flex;flex-direction:column;line-height:1.15}
-  .brand-text .name{font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--green-deep)}
+  .brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+  .brand-text .name{font-family:var(--f-display);font-weight:600;font-size:14px;color:var(--green-deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   body[data-lang="ta"] .brand-text .name{font-family:'Noto Serif Tamil',serif}
   @media(min-width:768px){.brand-text .name{font-size:17px}}
-  .brand-text .sub{font-family:var(--f-body);font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-mute);margin-top:2px}
-  body[data-lang="ta"] .brand-text .sub{letter-spacing:0;text-transform:none;font-size:12px}
+  .brand-text .sub{font-family:var(--f-body);font-size:10px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-mute);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  body[data-lang="ta"] .brand-text .sub{letter-spacing:0;text-transform:none;font-size:11px}
 
   nav.primary{display:none}
   @media(min-width:900px){
@@ -104,10 +104,10 @@
     nav.primary a:hover{color:var(--green-deep)}
     nav.primary a:hover::after{transform:scaleX(1)}
   }
-  .nav-right{display:flex;align-items:center;gap:var(--s-3)}
+  .nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 
-  .lang-toggle{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:var(--r-pill);padding:3px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.02)}
-  .lang-toggle button{padding:6px 14px;font-size:12px;font-weight:600;letter-spacing:0.02em;color:var(--ink-mute);border-radius:var(--r-pill);transition:color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease)}
+  .lang-toggle{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:var(--r-pill);padding:2px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.02)}
+  .lang-toggle button{padding:5px 10px;font-size:12px;font-weight:600;letter-spacing:0.02em;color:var(--ink-mute);border-radius:var(--r-pill);transition:color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease)}
   .lang-toggle button.active{background:var(--green-deep);color:var(--white)}
   .lang-toggle button:not(.active):hover{color:var(--green-deep)}
 
@@ -115,7 +115,7 @@
   @media(min-width:640px){.btn-nav-donate{display:inline-flex}}
   .btn-nav-donate:hover{background:var(--gold-deep);box-shadow:var(--shadow-sm)}
 
-  .menu-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--r-md);color:var(--green-deep)}
+  .menu-toggle{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--r-md);color:var(--green-deep);flex-shrink:0}
   @media(min-width:900px){.menu-toggle{display:none}}
   .menu-toggle svg{width:22px;height:22px}
 
@@ -135,11 +135,15 @@
   @media(min-width:900px){.hero-grid{grid-template-columns:1.15fr 0.85fr;gap:var(--s-8)}}
 
   .hero-eyebrow{margin-bottom:var(--s-5)}
-  .hero h1{font-size:clamp(34px,6vw,60px);letter-spacing:-0.02em;margin-bottom:var(--s-5)}
+  .hero h1{font-size:clamp(30px,5vw,60px);letter-spacing:-0.02em;margin-bottom:var(--s-5)}
   .hero h1 em{font-style:italic;color:var(--gold);font-weight:500}
   body[data-lang="ta"] .hero h1 em{font-style:normal}
-  .hero .lede{font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);max-width:540px;margin-bottom:var(--s-6);line-height:1.6}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:var(--s-3);margin-bottom:var(--s-6)}
+  .hero .lede{font-size:clamp(15px,1.5vw,19px);color:var(--ink-soft);max-width:540px;margin-bottom:var(--s-6);line-height:1.6}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:var(--s-6)}
+  @media(max-width:640px){
+    .hero-ctas{flex-direction:column;width:100%}
+    .hero-ctas .btn{width:100%;justify-content:center;text-align:center}
+  }
   .hero-trust{display:flex;align-items:center;gap:var(--s-3);font-size:13px;color:var(--ink-soft)}
   .hero-trust svg{color:var(--green);flex-shrink:0}
 
@@ -360,7 +364,7 @@
   <div class="wrap">
     <div class="hero-grid">
       <div class="reveal">
-        <span class="eyebrow hero-eyebrow" style="white-space:nowrap; max-width:100%; display:inline-flex; align-items:center;">
+        <span class="eyebrow hero-eyebrow">
           <span data-i18n="hero_eb_en" class="active">Registered Public Trust · Reg No: 32/2019 · Tamil Nadu</span>
           <span data-i18n="hero_eb_ta">பதிவு பெற்ற அறக்கட்டளை · பதிவு எண்: 32/2019 · தமிழ்நாடு</span>
         </span>
