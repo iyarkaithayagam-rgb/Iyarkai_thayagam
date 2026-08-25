@@ -30,13 +30,18 @@
     --dur-fast:180ms;--dur:320ms;--dur-slow:520ms;
   }
 
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{background:var(--cream);color:var(--ink-body);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;max-width:100%}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden !important;width:100%}
+  body{background:var(--cream);color:var(--ink-body);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden !important;width:100%;position:relative}
   body[data-lang="ta"]{font-family:'Noto Sans Tamil','Inter',sans-serif}
-  img,svg{display:block;max-width:100%}
+  img,svg,video,iframe{display:block;max-width:100%;height:auto}
+  p,h1,h2,h3,h4,h5,h6,span,a,label,li,td,th{overflow-wrap:break-word;word-break:break-word}
   button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
   a{color:inherit;text-decoration:none;transition:color var(--dur-fast) var(--ease)}
+  
+  .skip-link{position:absolute;top:-100px;left:16px;background:var(--green-deep);color:var(--white);padding:12px 20px;border-radius:var(--r-pill);z-index:9999;font-weight:700;transition:top 0.2s ease;text-decoration:none}
+  .skip-link:focus{top:16px;outline:3px solid var(--gold);outline-offset:2px}
+  :focus-visible{outline:3px solid var(--gold) !important;outline-offset:2px !important}
 
   h1,h2,h3,h4{font-family:var(--f-display);color:var(--green-deep);font-weight:600;line-height:1.12;letter-spacing:-0.015em}
   body[data-lang="ta"] h1,body[data-lang="ta"] h2,body[data-lang="ta"] h3,body[data-lang="ta"] h4{font-family:'Noto Serif Tamil',serif;letter-spacing:0}
@@ -286,8 +291,9 @@
 </style>
 </head>
 <body data-lang="en">
+<a href="#main-content" class="skip-link">Skip to main content / முதன்மை உள்ளடக்கத்திற்குச் செல்லவும்</a>
 
-<header id="header">
+<header id="header" role="banner">
   <div class="wrap">
     <div class="nav">
       <a href="index.html" class="brand" aria-label="Iyarkai Thayagam Arakkattalai home">
@@ -312,14 +318,14 @@
       </nav>
       <div class="nav-right">
         <div class="lang-toggle" role="group" aria-label="Language selection">
-          <button id="btn-en" class="active" onclick="setLang('en')" aria-label="English">EN</button>
-          <button id="btn-ta" onclick="setLang('ta')" aria-label="Tamil">தமிழ்</button>
+          <button id="btn-en" class="active" onclick="setLang('en')" aria-label="Switch language to English">EN</button>
+          <button id="btn-ta" onclick="setLang('ta')" aria-label="தமிழுக்கு மாறவும்">தமிழ்</button>
         </div>
         <a href="get-involved.html#donate" class="btn-nav-donate">
           <span data-i18n="nav_donate_en" class="active">Donate</span>
           <span data-i18n="nav_donate_ta">நன்கொடை</span>
         </a>
-        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Navigation Menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
             <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
           </svg>
@@ -330,8 +336,8 @@
 </header>
 
 <div class="drawer-backdrop" onclick="toggleMenu()"></div>
-<aside class="mobile-drawer" aria-label="Mobile menu">
-  <button class="close" onclick="toggleMenu()" aria-label="Close menu">
+<aside class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <button class="close" onclick="toggleMenu()" aria-label="Close navigation menu">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
       <line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/>
     </svg>
@@ -346,6 +352,8 @@
     <span data-i18n="nav_donate_ta">நன்கொடை</span>
   </a>
 </aside>
+
+<main id="main-content" role="main">
 
 <!-- HERO -->
 <section class="hero">
@@ -655,12 +663,10 @@
       </ul>
     </div>
   </div>
-</section>
-
-
+</main>
 
 <!-- FOOTER -->
-<footer style="background:#0D2818; color:rgba(255,255,255,0.85); padding:60px 0 30px; border-top:3px solid var(--gold);">
+<footer role="contentinfo" style="background:#0D2818; color:rgba(255,255,255,0.85); padding:60px 0 30px; border-top:3px solid var(--gold);">
   <div class="wrap">
     <div class="footer-grid">
       <div style="max-width:320px;">
